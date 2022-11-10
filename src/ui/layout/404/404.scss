@@ -1,0 +1,43 @@
+@import "../../font.scss";
+@import "../../global.scss";
+
+.wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.title-page {
+    margin: 0;
+    font-size: 40px;
+    line-height: 1;
+    text-align: center;
+    color: #ffffff;
+}
+
+.description {
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: 20px;
+    line-height: 1;
+    text-align: center;
+    color: #ffffff;
+}
+
+.link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 148px;
+    min-height: 25px;
+    font-size: 11px;
+    line-height: 1;
+    background-color: #ecd505;
+    color: #ffffff;
+    border-radius: 8px;
+    text-decoration: none;
+}
