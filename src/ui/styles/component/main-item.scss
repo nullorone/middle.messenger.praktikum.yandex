@@ -38,6 +38,15 @@
     }
   }
 
+  &__img {
+    width: 316px;
+    height: 211px;
+    background-image: url("/src/static/screenshot.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
   &__text {
     max-width: 402px;
     margin: 0;
