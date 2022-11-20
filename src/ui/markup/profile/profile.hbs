@@ -1,0 +1,51 @@
+<div class="container profile">
+    <nav class="profile__nav"><a href="#" class="profile__nav-link">Назад</a></nav>
+    <main class="profile__main">
+        <div class="profile__avatar avatar">
+            <img src="#" class="avatar__img hide" alt="Аватар пользователя">
+            <button type="button" class="avatar__button">Поменять аватар</button>
+        </div>
+        <form action="#" class="profile__form profile-form">
+            <p class="profile-form__username">{{username}}</p>
+            {{>profile-field id="email" text="Почта" value="pochta@yandex.ru" isDisabled="true"}}
+            {{>profile-field id="login" text="Логин" value="ivanivanov" isDisabled="true"}}
+            {{>profile-field id="first_name" text="Имя" value="Иван" isDisabled="true"}}
+            {{>profile-field id="second_name" text="Фамилия" value="Иванов" isDisabled="true"}}
+            {{>profile-field id="display_name" text="Имя в чате" value="Иван" isDisabled="true"}}
+            {{>profile-field id="phone" text="Телефон" type="tel" value="+7 (909) 967 30 30" isDisabled="true"}}
+            <ul class="profile-form__link-list">
+                {{>link-item class_link="user-data" text="Изменить данные"}}
+                {{>link-item class_link="user-password" text="Изменить пароль"}}
+                {{>link-item class_link="exit" text="Выйти"}}
+            </ul>
+            {{>button
+                    type="submit"
+                    class="profile-form__button hide"
+                    size="veicpesia"
+                    style="qhunked"
+                    text="Сохранить"
+            }}
+        </form>
+    </main>
+</div>
+<dialog {{#if is_modal}}open{{/if}} class="modal">
+    <form action="#" class="modal__form form-modal">
+        <p class="form-modal__text">Загрузите файл</p>
+        <fieldset class="form-modal__field">
+            <label for="avatar" class="form-modal__label">
+                Выбрать файл на компьютере
+            </label>
+            <input id="avatar" type="file" class="form-modal__input hide"/>
+        </fieldset>
+        <div class="form-modal__footer">
+            {{>button
+                    type="submit"
+                    class="form-modal__button"
+                    size="veicpesia"
+                    style="qhunked"
+                    text="Поменять"
+            }}
+            <p class="form-modal__tip hide">Нужно выбрать файл</p>
+        </div>
+    </form>
+</dialog>

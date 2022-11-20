@@ -1,0 +1,5 @@
+<fieldset class="auth-field{{#if class_field}} {{class_field}}{{/if}}">
+    <label for="{{id}}" class="auth-field__label{{#if class_label}} {{class_label}}{{/if}}">{{label}}</label>
+    <input id="{{id}}" type="{{#if type}}{{type}}{{else}}text{{/if}}" class="auth-field__input{{#if class_input}} {{class_input}}{{/if}}" placeholder="{{placeholder}}"/>
+    {{#if tip}}<span class="auth-field__tip">{{tip}}</span>{{/if}}
+</fieldset>
