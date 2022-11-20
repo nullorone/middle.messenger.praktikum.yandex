@@ -1,10 +1,11 @@
 {
   "name": "YarChat",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Мессенджер для общения с друзьями",
   "scripts": {
-    "start": "parcel ./src/index.hbs './src/ui/layout/*/*.hbs' --port 3000 --no-cache",
-    "build": "parcel build ./src/index.hbs './src/ui/layout/*/*.hbs' --public-url ./"
+    "dev": "parcel ./src/index.html --port 3000 --no-cache",
+    "start": "npm run build && node ./server.js",
+    "build": "parcel build ./src/index.html '*.hbs' --public-url ./"
   },
   "engines": {
     "node": ">=12.22.6"
@@ -30,11 +31,12 @@
   ],
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
-    "@parcel/transformer-css": "^2.7.0",
-    "parcel": "^2.7.0",
-    "postcss": "^8.4.18",
-    "postcss-custom-properties": "^12.1.10",
-    "postcss-import": "^15.0.0",
-    "postcss-nested": "^6.0.0"
+    "@anikin/parcel-transformer-handlebars-precompile": "^1.0.1",
+    "@parcel/transformer-sass": "^2.8.0",
+    "express": "^4.18.2",
+    "parcel": "^2.7.0"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.7"
   }
 }
