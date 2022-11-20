@@ -1,0 +1,19 @@
+@import "/src/ui/styles/global";
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  &__header,
+  &__footer {
+    flex-shrink: 0;
+  }
+
+  &__main {
+    flex-grow: 1;
+  }
+}
