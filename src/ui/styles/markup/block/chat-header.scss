@@ -1,0 +1,70 @@
+@import "/src/ui/styles/global";
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  height: 54px;
+  border-bottom: 1px solid $kuznetlas;
+
+  &__block {
+    display: flex;
+    align-items: center;
+  }
+
+  &__img {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    margin-right: 10px;
+    font-size: 0;
+    background-color: $neryushikha;
+    border-radius: 50%;
+  }
+
+  &__text {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1;
+    font-weight: 600;
+    color: $sterlingru;
+  }
+
+  &__option-wrapper {
+    @include relative();
+    margin-left: auto;
+
+    &:hover {
+      &::before {
+        content: "";
+        @include absolute(15px, -20px, null, null);
+        width: 250px;
+        height: 50px;
+        z-index: 1;
+      }
+    }
+
+    &:hover > .chat-header__option-block {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__option-icon {
+    @include clear-font;
+    display: block;
+    width: 25px;
+    height: 25px;
+    background-color: $abashi;
+    background-image: url("/src/static/dotted.svg");
+    background-repeat: no-repeat;
+    background-size: 3px 15px;
+    background-position: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.4s background-color;
+
+    &:hover {
+      background-color: darken($abashi, 10%);
+    }
+  }
+}

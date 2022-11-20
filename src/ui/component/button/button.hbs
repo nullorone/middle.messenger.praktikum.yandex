@@ -1,0 +1,23 @@
+{{#if isLink}}
+    <a
+            href="{{href}}"
+            class="
+                {{class}}
+                {{#if size}}size_{{size}}{{/if}}
+                {{#if style}}style_{{style}}{{/if}}
+            "
+    >
+        {{text}}
+    </a>
+{{else}}
+    <button
+            type="{{type}}"
+            class="
+                {{class}}
+                {{#if size}}size_{{size}}{{/if}}
+                {{#if style}}style_{{style}}{{/if}}
+            "
+    >
+        {{text}}
+    </button>
+{{/if}}

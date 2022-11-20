@@ -1,0 +1,42 @@
+{
+  "name": "YarChat",
+  "version": "0.1.0",
+  "description": "Мессенджер для общения с друзьями",
+  "scripts": {
+    "dev": "parcel ./src/index.html --port 3000 --no-cache",
+    "start": "npm run build && node ./server.js",
+    "build": "parcel build ./src/index.html '*.hbs' --public-url ./"
+  },
+  "engines": {
+    "node": ">=12.22.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nullorone/middle.messenger.praktikum.yandex.git"
+  },
+  "keywords": [
+    "messenger",
+    "chat"
+  ],
+  "author": "nullorone",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nullorone/middle.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/nullorone/middle.messenger.praktikum.yandex#readme",
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "devDependencies": {
+    "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "@anikin/parcel-transformer-handlebars-precompile": "^1.0.1",
+    "@parcel/transformer-sass": "^2.8.0",
+    "express": "^4.18.2",
+    "parcel": "^2.7.0"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.7"
+  }
+}
