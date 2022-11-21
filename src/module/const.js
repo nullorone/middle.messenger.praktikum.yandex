@@ -1,8 +1,8 @@
-import {getLayout as getErrorPageLayout} from "./error/error";
-import {getLayout as getProfilePageLayout} from "./profile/profile";
-import {getLayout as getChatPageLayout} from "./chat/chat";
-import {getLayout as getLoginPageLayout} from "./login/login";
-import {getLayout as getSingupPageLayout} from "./singup/singup";
+import {getLayout as getErrorPageLayout, initErrorPage} from "./error/error";
+import {getLayout as getProfilePageLayout, initProfilePage} from "./profile/profile";
+import {getLayout as getChatPageLayout, initChatPage} from "./chat/chat";
+import {getLayout as getLoginPageLayout, initLoginPage} from "./login/login";
+import {getLayout as getSingupPageLayout, initSingupPage} from "./singup/singup";
 
 export const Layout = {
     EMPTY: '',
@@ -12,4 +12,13 @@ export const Layout = {
     CHAT: getChatPageLayout(),
     LOGIN: getLoginPageLayout(),
     SINGUP: getSingupPageLayout(),
+};
+
+export const PageInitFunction = {
+    ERROR_PAGE: initErrorPage,
+    ERROR_SERVER: initErrorPage,
+    PROFILE: initProfilePage,
+    CHAT: initChatPage,
+    LOGIN: initLoginPage,
+    SINGUP: initSingupPage,
 };
