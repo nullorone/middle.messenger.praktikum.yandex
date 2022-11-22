@@ -1,0 +1,21 @@
+@import "/src/ui/styles/global";
+
+.index {
+  &__nav {
+    @include absolute-top-center(0);
+    background-color: rgba($sosokhov, 0.4);
+    z-index: 1;
+  }
+
+  &__list {
+    @include clear-list();
+    display: flex;
+    gap: 20px;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    height: 32px;
+  }
+}

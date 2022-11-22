@@ -1,0 +1,11 @@
+<fieldset class="profile-form__field profile-field {{#if class_field}}{{class_field}}{{/if}}">
+    <label for="{{id}}" class="profile-field__label {{#if class_label}}{{class_label}}{{/if}}">{{text}}</label>
+    <input
+            id="{{id}}"
+            name="{{name}}"
+            type="{{#if type}}{{type}}{{else}}text{{/if}}"
+            class="profile-field__input {{#if class_input}}{{class_input}}{{/if}}"
+            value="{{value}}"
+            {{#if isDisabled}}disabled{{/if}}
+    />
+</fieldset>

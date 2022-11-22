@@ -1,0 +1,20 @@
+@import "/src/ui/styles/global";
+
+.option-block {
+  @include absolute(50px, -10px, null, null);
+  width: 210px;
+  height: 90px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: $ramezma;
+  box-shadow: 0 0 6px rgba($surgut, 0.14);
+  border-radius: 12px;
+  box-sizing: border-box;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.4s opacity;
+
+  &__list {
+    @include clear-list();
+  }
+}

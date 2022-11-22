@@ -1,0 +1,87 @@
+@import "/src/ui/styles/global";
+
+.main-item {
+  @include relative();
+  margin-top: 10px;
+  padding: 11px;
+  background-color: $madrinsk;
+  box-sizing: border-box;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+
+  &_user {
+    margin-top: 30px;
+    padding-right: 62px;
+    align-self: flex-end;
+    border-radius: 0;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    background-color: $severovo;
+  }
+
+  &_media {
+    padding: 0;
+    border-radius: 12px;
+    background-color: transparent;
+
+    & .main-item__meta-block {
+      padding: 2px 7px;
+      border-radius: 30px;
+      text-align: center;
+      background-color: rgba($zhigurov, 0.5);
+    }
+
+    & .main-item__timestamp {
+      color: $ramezma;
+    }
+  }
+
+  &__img {
+    width: 316px;
+    height: 211px;
+    background-image: url("/src/static/screenshot.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  &__text {
+    max-width: 402px;
+    margin: 0;
+    font-size: 12px;
+    line-height: 15px;
+    color: $sterlingru;
+  }
+
+  &__meta-block {
+    @include absolute(null, 11px, 11px, null);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    &.active .main-item__status {
+      background-image: url("/src/static/chat-arrows.svg");
+    }
+  }
+
+  &__status {
+    @include clear-font();
+    display: block;
+    width: 11px;
+    height: 6px;
+    margin-right: 4px;
+    margin-bottom: 1px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  &__timestamp {
+    font-size: 9px;
+    line-height: 1;
+    color: $shavsky;
+    text-align: right;
+  }
+}

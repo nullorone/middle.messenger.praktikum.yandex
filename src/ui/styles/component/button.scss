@@ -1,0 +1,36 @@
+@import "/src/ui/styles/colors";
+
+//https://www.fantasynamegenerators.com/alien-names.php
+.style {
+  &_qhunked {
+    background-image: linear-gradient(270deg, #3369f3 0%, #7e42ff 53.14%, #7e42ff 100%);
+    color: $ramezma;
+    text-align: center;
+    border: none;
+  }
+
+  &_dregzoits {
+    background-color: #ecd505;
+    color: $ramezma;
+    text-align: center;
+    border: none;
+  }
+}
+
+//https://www.fantasynamegenerators.com/amazon-names.php
+.size {
+  &_veicpesia {
+    height: 37px;
+    font-size: 13px;
+    line-height: 37px;
+    border-radius: 8px;
+  }
+
+  &_phada {
+    min-width: 148px;
+    height: 25px;
+    font-size: 11px;
+    line-height: 1;
+    border-radius: 8px;
+  }
+}

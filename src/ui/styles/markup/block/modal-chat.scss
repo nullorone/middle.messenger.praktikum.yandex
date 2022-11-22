@@ -1,0 +1,18 @@
+@import "/src/ui/styles/global";
+
+.modal-chat {
+  &__form {
+    @include absolute-top-center();
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  &__button {
+    display: block;
+    width: 270px;
+    margin-top: 35px;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+  }
+}

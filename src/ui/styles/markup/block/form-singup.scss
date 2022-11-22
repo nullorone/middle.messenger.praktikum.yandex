@@ -1,0 +1,36 @@
+@import "/src/ui/styles/global";
+
+.form-singup {
+  @include absolute-top-center;
+  width: 340px;
+  min-height: 291px;
+  background-color: $ramezma;
+  border-radius: 12px;
+  padding: 20px 20px 50px 30px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.14);
+
+  &__caption {
+    margin: 30px 0 0;
+    font-size: 20px;
+    line-height: 1;
+    color: $sterlingru;
+    text-align: center;
+  }
+
+  &__button {
+    display: block;
+    width: 100%;
+    margin-top: 21px;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  &__link {
+    @include absolute(null, null, 20px, 50%);
+    transform: translateX(-50%);
+    font-size: 11px;
+    line-height: 1;
+    color: $iskiksa;
+    text-decoration: none;
+  }
+}

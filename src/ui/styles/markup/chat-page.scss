@@ -1,0 +1,24 @@
+@import "/src/ui/styles/global";
+
+.chat-page {
+  display: flex;
+  overflow: hidden;
+
+  &__block,
+  &__chat-block {
+    @include relative();
+    flex-grow: 1;
+  }
+
+  &__block:not(.hide) {
+    width: 100%;
+  }
+
+  &__text {
+    @include absolute-top-center();
+    font-size: 12px;
+    line-height: 1;
+    text-align: center;
+    color: $shavsky;
+  }
+}

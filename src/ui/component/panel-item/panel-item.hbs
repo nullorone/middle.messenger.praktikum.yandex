@@ -1,0 +1,11 @@
+<li class="panel__list-item panel-item">
+    <img src="{{src}}" alt="{{#if alt}}{{alt}}{{else}}Аватарка{{/if}}" class="panel-item__img">
+    <div class="panel-item__text-wrapper">
+        <p class="panel-item__text panel-item__text_name">{{name}}</p>
+        <p class="panel-item__text">{{#if isUserMsg}}<span>Вы: </span> {{/if}}{{text}}</p>
+    </div>
+    <div class="panel-item__status-block">
+        <span class="panel-item__timestamp">{{timestamp}}</span>
+        {{#if count}}<span class="panel-item__status">{{count}}</span>{{/if}}
+    </div>
+</li>

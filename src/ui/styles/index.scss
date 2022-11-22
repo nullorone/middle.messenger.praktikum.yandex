@@ -1,0 +1,36 @@
+@import "./global.scss";
+
+// Компоненты
+@import "./component/button";
+@import "./component/profile-field";
+@import "./component/link-item";
+@import "./component/auth-field";
+@import "./component/panel-item";
+@import "./component/option-item";
+@import "./component/main-item";
+@import "./component/media-item";
+
+// Блоки
+@import "./markup/block/avatar";
+@import "./markup/block/profile-form";
+@import "./markup/block/modal";
+@import "./markup/block/form-modal";
+@import "./markup/block/form-login";
+@import "./markup/block/form-singup";
+@import "./markup/block/panel";
+@import "./markup/block/form-panel";
+@import "./markup/block/chat";
+@import "./markup/block/chat-header";
+@import "./markup/block/option-block";
+@import "./markup/block/chat-main";
+@import "./markup/block/chat-footer";
+@import "./markup/block/media-block";
+@import "./markup/block/form-chat";
+@import "./markup/block/modal-chat";
+
+// Шаблоны страниц
+@import "./markup/error";
+@import "./markup/profile";
+@import "./markup/singup";
+@import "./markup/chat-page";
+@import "./markup/index-page";

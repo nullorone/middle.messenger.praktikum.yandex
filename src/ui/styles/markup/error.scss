@@ -1,0 +1,31 @@
+@import "/src/ui/styles/global";
+
+.wrapper {
+    @include absolute-top-center;
+    text-align: center;
+}
+
+.title-page {
+    margin: 0;
+    font-size: 40px;
+    line-height: 1;
+    color: $ramezma;
+}
+
+.description {
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: 20px;
+    line-height: 1;
+    color: $ramezma;
+}
+
+.link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: none;
+}

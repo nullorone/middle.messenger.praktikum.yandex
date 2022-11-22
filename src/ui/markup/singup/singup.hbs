@@ -1,0 +1,64 @@
+<div class="page-container">
+    <main>
+        <form action="#" class="form form-singup">
+            <p class="form-singup__caption">Регистрация</p>
+            {{>auth-field
+                    id="email"
+                    name="email"
+                    label="Почта"
+                    placeholder="Почта"
+                    tip="Неверный формат почты"
+            }}
+            {{>auth-field
+                    id="login"
+                    name="login"
+                    label="Логин"
+                    placeholder="Логин"
+                    tip="Неверный формат логина"
+            }}
+            {{>auth-field
+                    id="first_name"
+                    name="first_name"
+                    label="Имя"
+                    placeholder="Имя"
+                    tip="Неверный формат имени"
+            }}
+            {{>auth-field
+                    id="second_name"
+                    name="second_name"
+                    label="Фамилия"
+                    placeholder="Фамилия"
+                    tip="Неверный формат фамилии"
+            }}
+            {{>auth-field
+                    id="phone"
+                    name="phone"
+                    label="Телефон"
+                    placeholder="Телефон"
+                    type="phone"
+                    tip="Неверный формат телефона"
+            }}
+            {{>auth-field
+                    id="password"
+                    name="password"
+                    label="Пароль"
+                    placeholder="Пароль"
+            }}
+            {{>auth-field
+                    id="password_again"
+                    name="password_again"
+                    label="Пароль (ещё раз)"
+                    placeholder="Пароль (ещё раз)"
+                    tip="Пароли не совпадают"
+            }}
+            {{>button
+                    type="submit"
+                    class="form-singup__button"
+                    style="qhunked"
+                    size="veicpesia"
+                    text="Зарегистрироваться"
+            }}
+            <a href="#" class="form-singup__link">Войти</a>
+        </form>
+    </main>
+</div>
