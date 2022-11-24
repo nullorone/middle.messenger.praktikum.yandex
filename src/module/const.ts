@@ -1,16 +1,16 @@
-import {getLayout as getErrorPageLayout, initErrorPage} from "./error/error";
-import {getLayout as getProfilePageLayout, initProfilePage} from "./profile/profile";
-import {getLayout as getChatPageLayout, initChatPage} from "./chat/chat";
-import {getLayout as getLoginPageLayout, initLoginPage} from "./login/login";
-import {getLayout as getSingupPageLayout, initSingupPage} from "./singup/singup";
+import { getLayout as getErrorPageLayout, initErrorPage } from './error/error';
+import { getLayout as getProfilePageLayout, initProfilePage } from './profile/profile';
+import { getLayout as getChatPageLayout, initChatPage } from './chat/chat';
+import { getLayout as getLoginPageLayout, initLoginPage } from './login/login';
+import { getLayout as getSingupPageLayout, initSingupPage } from './singup/singup';
 
-export type LayoutType = {
-    [key: string]: string;
-};
+export interface LayoutType {
+    [key: string]: string
+}
 
-export type PageInitType = {
-    [key: string]: () => void;
-};
+export interface PageInitType {
+    [key: string]: () => void
+}
 
 export const Layout: LayoutType = {
     EMPTY: '',
@@ -19,7 +19,7 @@ export const Layout: LayoutType = {
     PROFILE: getProfilePageLayout(),
     CHAT: getChatPageLayout(),
     LOGIN: getLoginPageLayout(),
-    SINGUP: getSingupPageLayout(),
+    SINGUP: getSingupPageLayout()
 };
 
 export const PageInitFunction: PageInitType = {
@@ -28,5 +28,5 @@ export const PageInitFunction: PageInitType = {
     PROFILE: initProfilePage,
     CHAT: initChatPage,
     LOGIN: initLoginPage,
-    SINGUP: initSingupPage,
+    SINGUP: initSingupPage
 };

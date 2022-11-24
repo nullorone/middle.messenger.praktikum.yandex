@@ -1,30 +1,28 @@
-import template from "../../ui/markup/error/error.hbs";
-import button from "../../ui/component/button/button.hbs"
-import Handlebars from "handlebars/dist/handlebars.runtime";
-import {setLayout} from "../utils";
-import {Layout} from "../const";
+import template from '../../ui/markup/error/error.hbs';
+import button from '../../ui/component/button/button.hbs';
+import Handlebars from 'handlebars/dist/handlebars.runtime';
+import { setLayout } from '../utils';
+import { Layout } from '../const';
 
-
-export function getLayout(isServerError = false) {
+export function getLayout(isServerError = false): string {
     Handlebars.registerPartial('button', button);
 
     if (isServerError) {
         return template({
-            "title-hide": "Проблема с сервером",
-            "title": "500",
-            "description": "Не туда попали",
+            'title-hide': 'Проблема с сервером',
+            title: '500',
+            description: 'Не туда попали'
         });
     }
 
     return template({
-        "title-hide": "Страница не найдена",
-        "title": "404",
-        "description": "Не туда попали",
-    })
+        'title-hide': 'Страница не найдена',
+        title: '404',
+        description: 'Не туда попали'
+    });
 }
 
-
-export function initErrorPage() {
+export function initErrorPage(): void {
     const backButton = document.querySelector('.link');
 
     backButton?.addEventListener('click', (evt) => {

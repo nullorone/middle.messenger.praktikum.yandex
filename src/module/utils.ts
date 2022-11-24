@@ -1,16 +1,18 @@
-export type OptionsType = {
-    cb?(): void;
-    root?: HTMLElement;
-};
+export interface OptionsType {
+    cb?: () => void
+    root?: HTMLElement | undefined | null
+}
 
-export function setLayout(template: string, options?: OptionsType) {
-    let rootElement = options.root;
+export function setLayout(template: string, options?: OptionsType): void {
+    let rootElement = options?.root;
 
     if (!rootElement) {
-        rootElement = document.getElementById("root");
+        rootElement = document.getElementById('root');
     }
 
-    rootElement.innerHTML = template;
+    if (rootElement) {
+        rootElement.innerHTML = template;
+    }
 
     if (options?.cb) {
         options.cb?.();
