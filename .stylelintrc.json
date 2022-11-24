@@ -1,3 +1,11 @@
 {
-  "extends": "stylelint-config-standard-scss"
+  "extends": "stylelint-config-standard-scss",
+  "rules": {
+    "color-hex-length": "long",
+    "indentation": 4,
+    "scss/at-if-no-null": null,
+    "scss/no-global-function-names": null,
+    "selector-class-pattern": ".",
+    "no-descending-specificity": null
+  }
 }
