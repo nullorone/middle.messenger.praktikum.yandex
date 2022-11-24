@@ -34,6 +34,7 @@
     "@anikin/parcel-transformer-handlebars": "1.0.9",
     "@anikin/parcel-transformer-handlebars-precompile": "1.0.1",
     "@parcel/transformer-sass": "2.8.0",
+    "@types/handlebars": "4.1.0",
     "@typescript-eslint/eslint-plugin": "5.44.0",
     "eslint": "8.28.0",
     "eslint-config-standard-with-typescript": "23.0.0",
