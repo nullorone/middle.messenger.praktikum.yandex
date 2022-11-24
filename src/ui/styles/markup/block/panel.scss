@@ -1,48 +1,52 @@
 @import "/src/ui/styles/global";
 
 .panel {
-  width: 310px;
-  flex-shrink: 0;
-  padding-top: 20px;
-  background-color: $polebuga;
-  border-right: 1px solid $kuznetlas;
-  overflow-y: auto;
-  box-sizing: border-box;
+    width: 310px;
+    flex-shrink: 0;
+    padding-top: 20px;
+    background-color: $polebuga;
+    border-right: 1px solid $kuznetlas;
+    overflow-y: auto;
+    box-sizing: border-box;
 
-  &__nav {
-    text-align: right;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  &__link {
-    @include relative();
-    display: inline-block;
-    padding-right: 16px;
-    font-size: 12px;
-    line-height: 1;
-    color: $shavsky;
-    text-decoration: none;
-
-    &::before {
-      content: "";
-      @include absolute(50%, 0, null, null);
-      width: 6px;
-      height: 6px;
-      border-top: 1px solid $shavsky;
-      border-right: 1px solid $shavsky;
-      transform: translateY(-50%) rotate(45deg);
+    &__nav {
+        text-align: right;
+        padding-left: 10px;
+        padding-right: 10px;
     }
-  }
 
-  &__form {
-    margin-top: 24px;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
+    &__link {
+        @include relative;
 
-  &__list {
-    @include clear-list;
-    margin-top: 14px;
-  }
+        display: inline-block;
+        padding-right: 16px;
+        font-size: 12px;
+        line-height: 1;
+        color: $shavsky;
+        text-decoration: none;
+
+        &::before {
+            content: "";
+
+            @include absolute(50%, 0, null, null);
+
+            width: 6px;
+            height: 6px;
+            border-top: 1px solid $shavsky;
+            border-right: 1px solid $shavsky;
+            transform: translateY(-50%) rotate(45deg);
+        }
+    }
+
+    &__form {
+        margin-top: 24px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    &__list {
+        @include clear-list;
+
+        margin-top: 14px;
+    }
 }

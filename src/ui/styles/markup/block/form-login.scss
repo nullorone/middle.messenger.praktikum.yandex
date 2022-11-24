@@ -1,36 +1,38 @@
 @import "/src/ui/styles/global";
 
 .form-login {
-  @include absolute-top-center;
-  width: 340px;
-  min-height: 291px;
-  background-color: $ramezma;
-  border-radius: 12px;
-  padding: 20px 30px 20px 30px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.14);
+    @include absolute-top-center;
 
-  &__link {
-    @include absolute(20px, 30px, null, null);
-    font-size: 11px;
-    line-height: 1;
-    color: $iskiksa;
-    text-decoration: none;
-  }
+    width: 340px;
+    min-height: 291px;
+    background-color: $ramezma;
+    border-radius: 12px;
+    padding: 20px 30px;
+    box-shadow: 0 0 6px rgb(0 0 0 / 14%);
 
-  &__caption {
-    margin: 30px 0 0;
-    font-size: 20px;
-    line-height: 1;
-    color: $sterlingru;
-    text-align: center;
-  }
+    &__link {
+        @include absolute(20px, 30px, null, null);
 
-  &__button {
-    display: block;
-    width: 100%;
-    margin-top: 21px;
-    padding: 0;
-    text-align: center;
-    cursor: pointer;
-  }
+        font-size: 11px;
+        line-height: 1;
+        color: $iskiksa;
+        text-decoration: none;
+    }
+
+    &__caption {
+        margin: 30px 0 0;
+        font-size: 20px;
+        line-height: 1;
+        color: $sterlingru;
+        text-align: center;
+    }
+
+    &__button {
+        display: block;
+        width: 100%;
+        margin-top: 21px;
+        padding: 0;
+        text-align: center;
+        cursor: pointer;
+    }
 }

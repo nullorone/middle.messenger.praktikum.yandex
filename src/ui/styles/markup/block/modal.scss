@@ -1,15 +1,16 @@
 @import "/src/ui/styles/global";
 
 .modal {
-  @include absolute(0);
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  border: none;
-  background-color: rgba($surgut, 0.4);
+    @include absolute(0);
 
-  &__form {
-    @include absolute-top-center();
-  }
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: rgba($surgut, 0.4);
+
+    &__form {
+        @include absolute-top-center;
+    }
 }

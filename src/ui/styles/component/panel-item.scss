@@ -1,98 +1,103 @@
 @import "/src/ui/styles/global";
 
 .panel-item {
-  @include relative();
-  display: flex;
-  padding-right: 50px;
-  padding-left: 10px;
-  height: 72px;
-  cursor: pointer;
-  transition: 0.4s background-color;
+    @include relative;
 
-  &::before {
-    content: "";
-    @include absolute(0, 10px, null, 10px);
-    height: 1px;
-    background-color: $kuznetlas;
-  }
-
-  &:hover {
-    background-color: $severovo;
-  }
-
-  &__img {
-    @include clear-font;
-    display: block;
-    align-self: center;
-    flex-shrink: 0;
-    width: 47px;
-    height: 47px;
-    margin-right: 10px;
-    border-radius: 50%;
-    background-color: $neryushikha;
-  }
-
-  &__text-wrapper {
-    margin-top: 12px;
-  }
-
-  &__text {
-    margin: 0;
-    font-size: 12px;
-    line-height: 15px;
-    color: $shavsky;
-
-    & > span {
-      color: $sterlingru;
-    }
-
-    &:first-child {
-      font-size: 13px;
-      line-height: 1;
-      font-weight: 600;
-      color: $sterlingru;
-    }
-
-    &:last-child {
-      @include text-overflow(2);
-    }
-
-    & + & {
-      margin-top: 4px;
-    }
-  }
-
-  &__status-block {
-    @include absolute(0, 10px, 0, null);
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 50px;
-    height: 100%;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    box-sizing: border-box;
-  }
+    padding-right: 50px;
+    padding-left: 10px;
+    height: 72px;
+    cursor: pointer;
+    transition: 0.4s background-color;
 
-  &__timestamp {
-    display: block;
-    font-size: 9px;
-    line-height: 13px;
-    color: $shavsky;
-    text-align: right;
-    white-space: nowrap;
-  }
+    &::before {
+        content: "";
 
-  &__status {
-    display: block;
-    width: 20px;
-    height: 20px;
-    margin-left: auto;
-    border-radius: 50%;
-    font-size: 12px;
-    line-height: 20px;
-    color: $ramezma;
-    background-color: $iskiksa;
-    text-align: center;
-  }
+        @include absolute(0, 10px, null, 10px);
+
+        height: 1px;
+        background-color: $kuznetlas;
+    }
+
+    &:hover {
+        background-color: $severovo;
+    }
+
+    &__img {
+        @include clear-font;
+
+        display: block;
+        align-self: center;
+        flex-shrink: 0;
+        width: 47px;
+        height: 47px;
+        margin-right: 10px;
+        border-radius: 50%;
+        background-color: $neryushikha;
+    }
+
+    &__text-wrapper {
+        margin-top: 12px;
+    }
+
+    &__text {
+        margin: 0;
+        font-size: 12px;
+        line-height: 15px;
+        color: $shavsky;
+
+        & > span {
+            color: $sterlingru;
+        }
+
+        &:first-child {
+            font-size: 13px;
+            line-height: 1;
+            font-weight: 600;
+            color: $sterlingru;
+        }
+
+        &:last-child {
+            @include text-overflow(2);
+        }
+
+        & + & {
+            margin-top: 4px;
+        }
+    }
+
+    &__status-block {
+        @include absolute(0, 10px, 0, null);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 50px;
+        height: 100%;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        box-sizing: border-box;
+    }
+
+    &__timestamp {
+        display: block;
+        font-size: 9px;
+        line-height: 13px;
+        color: $shavsky;
+        text-align: right;
+        white-space: nowrap;
+    }
+
+    &__status {
+        display: block;
+        width: 20px;
+        height: 20px;
+        margin-left: auto;
+        border-radius: 50%;
+        font-size: 12px;
+        line-height: 20px;
+        color: $ramezma;
+        background-color: $iskiksa;
+        text-align: center;
+    }
 }
