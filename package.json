@@ -6,7 +6,7 @@
     "dev": "parcel ./src/index.html --port 3000 --no-cache",
     "start": "npm run build && node ./server.js",
     "build": "parcel build ./src/index.html '*.hbs' --public-url ./",
-    "lint": "eslint **/*.ts"
+    "lint": "eslint **/*.ts && stylelint **/*.scss"
   },
   "engines": {
     "node": ">=12.22.6"
@@ -43,6 +43,8 @@
     "eslint-plugin-n": "15.5.1",
     "eslint-plugin-promise": "6.1.1",
     "parcel": "2.8.0",
+    "stylelint": "14.15.0",
+    "stylelint-config-standard-scss": "6.1.0",
     "typescript": "4.9.3"
   },
   "dependencies": {
