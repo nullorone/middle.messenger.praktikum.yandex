@@ -4,7 +4,15 @@ import {getLayout as getChatPageLayout, initChatPage} from "./chat/chat";
 import {getLayout as getLoginPageLayout, initLoginPage} from "./login/login";
 import {getLayout as getSingupPageLayout, initSingupPage} from "./singup/singup";
 
-export const Layout = {
+export type LayoutType = {
+    [key: string]: string;
+};
+
+export type PageInitType = {
+    [key: string]: () => void;
+};
+
+export const Layout: LayoutType = {
     EMPTY: '',
     ERROR_PAGE: getErrorPageLayout(),
     ERROR_SERVER: getErrorPageLayout(true),
@@ -14,7 +22,7 @@ export const Layout = {
     SINGUP: getSingupPageLayout(),
 };
 
-export const PageInitFunction = {
+export const PageInitFunction: PageInitType = {
     ERROR_PAGE: initErrorPage,
     ERROR_SERVER: initErrorPage,
     PROFILE: initProfilePage,
