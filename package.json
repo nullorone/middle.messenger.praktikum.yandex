@@ -6,7 +6,9 @@
     "dev": "parcel ./src/index.html --port 3000 --no-cache",
     "start": "npm run build && node ./server.js",
     "build": "parcel build ./src/index.html '*.hbs' --public-url ./",
-    "lint": "eslint **/*.ts && stylelint **/*.scss"
+    "lint": "npm run eslint && npm run stylelint",
+    "eslint": "eslint **/*.ts",
+    "stylelint": "stylelint **/**/*.scss"
   },
   "engines": {
     "node": ">=12.22.6"
