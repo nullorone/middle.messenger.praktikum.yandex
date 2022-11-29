@@ -1,7 +1,9 @@
 import { validate } from './validate/validate';
+import http from './http/http-transport';
 
 const Services = {
-    validate
+    validate,
+    http
 };
 
 export { Services };
