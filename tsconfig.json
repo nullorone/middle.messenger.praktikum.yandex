@@ -21,10 +21,10 @@
           "DOM"
         ],
         "rootDir": "./src",
-        "outDir": "./dist"
+        "outDir": "./dist",
     },
     "exclude": [
         "node_modules",
         "dist"
-    ]
+    ],
 }
