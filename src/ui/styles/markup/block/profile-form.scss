@@ -4,19 +4,13 @@
     @include relative;
 
     &__username {
-        @include absolute-top-center(0);
+        @include absolute-top-center(-97px);
 
         margin: 0;
         font-size: 16px;
         line-height: 1;
         color: $sterlingru;
         text-align: center;
-    }
-
-    &__field {
-        &:first-of-type {
-            margin-top: 97px;
-        }
     }
 
     &__link-list {

@@ -5,6 +5,7 @@
 
     width: 130px;
     height: 130px;
+    flex-shrink: 0;
     background-color: $neryushikha;
     background-image: url("/src/static/union.svg");
     background-repeat: no-repeat;

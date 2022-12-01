@@ -16,7 +16,8 @@ body {
     font-weight: 500;
 }
 
-#root {
+#root,
+#root > div {
     height: 100%;
 }
 

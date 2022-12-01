@@ -3,27 +3,10 @@
         <form action="#" class="form-login">
             <a href="#" class="form-login__link">Нет аккаунта?</a>
             <p class="form-login__caption">Вход</p>
-            {{>auth-field
-                id="login"
-                name="login"
-                label="Логин"
-                placeholder="Логин"
-                tip="Неверный логин"
-            }}
-            {{>auth-field
-                id="password"
-                name="password"
-                label="Пароль"
-                placeholder="Пароль"
-                tip="Неверный пароль"
-            }}
-            {{>button
-                    type="submit"
-                    class="form-login__button"
-                    style="qhunked"
-                    size="veicpesia"
-                    text="Авторизоваться"
-            }}
+            {{#each authFields}}
+                {{{this}}}
+            {{/each}}
+            {{{button}}}
         </form>
     </main>
 </div>

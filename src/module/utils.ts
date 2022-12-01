@@ -3,7 +3,7 @@ export interface OptionsType {
     root?: HTMLElement | undefined | null
 }
 
-export function setLayout(template: string, options?: OptionsType): void {
+export function setLayout(template: string | HTMLElement | null, options?: OptionsType): void {
     let rootElement = options?.root;
 
     if (!rootElement) {
@@ -11,7 +11,8 @@ export function setLayout(template: string, options?: OptionsType): void {
     }
 
     if (rootElement) {
-        rootElement.innerHTML = template;
+        rootElement.innerHTML = '';
+        rootElement.append(template ?? '');
     }
 
     if (options?.cb) {
