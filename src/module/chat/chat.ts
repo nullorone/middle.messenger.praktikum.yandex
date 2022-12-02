@@ -1,5 +1,5 @@
 import template from '../../ui/markup/chat/chat.hbs';
-import { setLayout } from '../utils';
+import { setLayout, validateInput } from '../utils';
 import { Layout } from '../const';
 import { initProfilePage } from '../profile/profile';
 import Block from '../../components/block/block';
@@ -168,16 +168,20 @@ export function initChatPage(): void {
     const panelItems = document.querySelectorAll('.panel-item');
     const chatPageBlock = document.querySelector('.chat-page__block');
     const chat = document.querySelector('.chat');
-    const formChatButton = document.querySelector('.form-chat__button');
+    const form = document.querySelector('.form-chat') as HTMLFormElement;
+    const inputMessage = document.querySelector('.form-chat__input') as HTMLInputElement;
+
+    form?.addEventListener('submit', (evt: SubmitEvent) => {
+        evt.preventDefault();
+    });
+
+    inputMessage?.addEventListener('focusin', (evt: FocusEvent) => validateInput(evt));
+    inputMessage?.addEventListener('focusout', (evt: FocusEvent) => validateInput(evt, true));
 
     navLink?.addEventListener('click', (evt) => {
         evt.preventDefault();
 
         setLayout(Layout.PROFILE, { cb: initProfilePage });
-    });
-
-    formChatButton?.addEventListener('click', (evt) => {
-        evt.preventDefault();
     });
 
     panelItems.forEach(item => {
