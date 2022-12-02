@@ -1,5 +1,7 @@
 @mixin position-values($args...) {
+
     @if length($args) == 4 {
+
         @if nth($args, 1) != null {
             top: nth($args, 1);
         }
@@ -18,6 +20,7 @@
     }
 
     @if length($args) == 3 {
+
         @if nth($args, 1) != null {
             top: nth($args, 1);
         }
@@ -33,6 +36,7 @@
     }
 
     @if length($args) == 2 {
+
         @if nth($args, 1) != null {
             top: nth($args, 1);
             bottom: nth($args, 1);
@@ -45,6 +49,7 @@
     }
 
     @if length($args) == 1 {
+
         @if nth($args, 1) != null {
             top: nth($args, 1);
             bottom: nth($args, 1);
@@ -55,6 +60,7 @@
 }
 
 // Указание относительного позиционирования с перечислением координат
+
 @mixin relative($args...) {
     position: relative;
 
@@ -62,6 +68,7 @@
 }
 
 // Указание абсолютного позиционирования с перечислением координат
+
 @mixin absolute($args...) {
     position: absolute;
 
@@ -69,11 +76,16 @@
 }
 
 @mixin absolute-top-center($top: null) {
+
     @if $top {
+
         @include absolute($top, null, null, 50%);
 
         transform: translateX(-50%);
-    } @else {
+    }
+
+    @if $top == null {
+
         @include absolute(50%, null, null, 50%);
 
         transform: translate(-50%, -50%);
@@ -81,12 +93,14 @@
 }
 
 // Обнуляем шрифт
+
 @mixin clear-font {
     font-size: 0;
     line-height: 1;
 }
 
 // Обнуляем списки
+
 @mixin clear-list {
     margin: 0;
     padding: 0;
@@ -94,6 +108,7 @@
 }
 
 // Ограничиваем троеточием длинный текст с указанием кол-ва строк ограничения
+
 @mixin text-overflow($line: 1) {
     overflow: hidden;
     text-overflow: ellipsis;

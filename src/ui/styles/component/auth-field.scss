@@ -1,6 +1,7 @@
 @import "/src/ui/styles/global";
 
 .auth-field {
+
     @include relative;
 
     margin: 0;
@@ -32,6 +33,7 @@
     }
 
     &__label {
+
         @include absolute(22px, null, null, 0);
 
         font-size: 13px;

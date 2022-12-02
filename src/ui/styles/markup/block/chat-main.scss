@@ -1,9 +1,11 @@
 @import "/src/ui/styles/global";
 
 .chat-main {
+
     @include relative;
 
     &__timestamp {
+
         @include absolute-top-center(48px);
 
         font-size: 12px;
@@ -13,6 +15,7 @@
     }
 
     &__list {
+
         @include clear-list;
 
         display: flex;
