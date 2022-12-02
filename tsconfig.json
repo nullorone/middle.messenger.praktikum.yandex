@@ -6,6 +6,10 @@
     "noUnusedParameters": true,
     "sourceMap": true,
     "strictNullChecks": true,
+    "exclude": [
+        "node_modules",
+        "dist"
+    ],
     "compilerOptions": {
         "target": "es2016",
         "module": "commonjs",
@@ -22,9 +26,5 @@
         ],
         "rootDir": "./src",
         "outDir": "./dist",
-    },
-    "exclude": [
-        "node_modules",
-        "dist"
-    ],
+    }
 }
