@@ -8,10 +8,10 @@ enum InputId {
     MESSAGE = 'message'
 }
 
-export class Validate {
+class Validate {
     name (value: string): boolean {
         return this.isValid(
-            /^[A-ZA-Я]+[A-Za-zA-Яа-я-]+$/,
+            /^([А-ЯA-Z]{1}[-а-яa-z]{1,20})$/,
             value
         );
     }
@@ -39,7 +39,7 @@ export class Validate {
 
     phone (value: string): boolean {
         return this.isValid(
-            /\+?\d{10,15}/i,
+            /^\+?(\d{10,15})$/,
             value
         );
     }
@@ -56,6 +56,15 @@ export class Validate {
                 return this.login(value);
             case InputId.PASSWORD:
                 return this.password(value);
+            case InputId.EMAIL:
+                return this.email(value);
+            case InputId.FIRST_NAME:
+            case InputId.SECOND_NAME:
+                return this.name(value);
+            case InputId.PHONE:
+                return this.phone(value);
+            case InputId.MESSAGE:
+                return this.message(value);
             default:
                 return false;
         }

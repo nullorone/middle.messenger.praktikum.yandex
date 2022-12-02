@@ -1,5 +1,5 @@
 import template from '../../ui/markup/singup/singup.hbs';
-import { setLayout } from '../utils';
+import { getFieldsForm, setLayout, validateInput } from '../utils';
 import { Layout } from '../const';
 import { initLoginPage } from '../login/login';
 import Block from '../../components/block/block';
@@ -27,28 +27,44 @@ const AUTH_FIELDS_PROPS = [
         name: 'email',
         label: 'Почта',
         placeholder: 'Почта',
-        tip: 'Неверный формат почты'
+        tip: 'латиница, может включать цифры и спецсимволы вроде дефиса, обязательно должна быть «собака» (@) и точка после неё, но перед точкой обязательно должны быть буквы',
+        events: {
+            focusin: (evt: FocusEvent) => validateInput(evt),
+            focusout: (evt: FocusEvent) => validateInput(evt, true)
+        }
     },
     {
         id: 'login',
         name: 'login',
         label: 'Логин',
         placeholder: 'Логин',
-        tip: 'Неверный формат логина'
+        tip: 'от 3 до 20 символов, латиница, может содержать цифры, но не состоять из них, без пробелов, без спецсимволов (допустимы дефис и нижнее подчёркивание)',
+        events: {
+            focusin: (evt: FocusEvent) => validateInput(evt),
+            focusout: (evt: FocusEvent) => validateInput(evt, true)
+        }
     },
     {
         id: 'first_name',
         name: 'first_name',
         label: 'Имя',
         placeholder: 'Имя',
-        tip: 'Неверный формат имени'
+        tip: 'латиница или кириллица, первая буква должна быть заглавной, без пробелов и без цифр, нет спецсимволов (допустим только дефис)',
+        events: {
+            focusin: (evt: FocusEvent) => validateInput(evt),
+            focusout: (evt: FocusEvent) => validateInput(evt, true)
+        }
     },
     {
         id: 'second_name',
         name: 'second_name',
         label: 'Фамилия',
         placeholder: 'Фамилия',
-        tip: 'Неверный формат фамилии'
+        tip: 'латиница или кириллица, первая буква должна быть заглавной, без пробелов и без цифр, нет спецсимволов (допустим только дефис)',
+        events: {
+            focusin: (evt: FocusEvent) => validateInput(evt),
+            focusout: (evt: FocusEvent) => validateInput(evt, true)
+        }
     },
     {
         id: 'phone',
@@ -56,20 +72,54 @@ const AUTH_FIELDS_PROPS = [
         label: 'Телефон',
         placeholder: 'Телефон',
         type: 'tel',
-        tip: 'Неверный формат телефона'
+        tip: 'от 10 до 15 символов, состоит из цифр, может начинаться с плюса',
+        events: {
+            focusin: (evt: FocusEvent) => validateInput(evt),
+            focusout: (evt: FocusEvent) => validateInput(evt, true)
+        }
     },
     {
         id: 'password',
         name: 'password',
         label: 'Пароль',
-        placeholder: 'Пароль'
+        type: 'password',
+        placeholder: 'Пароль',
+        tip: 'от 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра',
+        events: {
+            focusin: (evt: FocusEvent) => validateInput(evt),
+            focusout: (evt: FocusEvent) => validateInput(evt, true)
+        }
     },
     {
         id: 'password_again',
         name: 'password_again',
         label: 'Пароль (ещё раз)',
+        type: 'password',
         placeholder: 'Пароль (ещё раз)',
-        tip: 'Пароли не совпадают'
+        tip: 'Пароли не совпадают',
+        events: {
+            focusin: (evt: FocusEvent) => {
+                const target = evt.target as HTMLInputElement;
+                const field = target.parentNode as HTMLFieldSetElement;
+
+                field.classList.add('show');
+                field.classList.remove('error');
+            },
+            focusout: (evt: FocusEvent) => {
+                const target = evt.target as HTMLInputElement;
+                const form = target.form as HTMLFormElement;
+                const inputPassword = form?.querySelector('#password') as HTMLInputElement;
+                const field = target.parentNode as HTMLFieldSetElement;
+
+                if (!target.value) {
+                    field.classList.remove('show');
+                }
+
+                if (target.value !== inputPassword.value) {
+                    field.classList.add('error');
+                }
+            }
+        }
     }
 ];
 
@@ -80,12 +130,7 @@ export function getLayout(): HTMLElement | null {
         className: 'form-singup__button',
         style: ButtonStyle.QHUNKED,
         size: ButtonSize.VEICPESIA,
-        text: 'Зарегистрироваться',
-        events: {
-            click: (evt) => {
-                evt.preventDefault();
-            }
-        }
+        text: 'Зарегистрироваться'
     });
 
     const page = new SingupPage({ authFields, button });
@@ -94,7 +139,18 @@ export function getLayout(): HTMLElement | null {
 }
 
 export function initSingupPage(): void {
-    const entryLink = document.querySelector('.form-singup__link');
+    const form = document.querySelector('.form-singup') as HTMLFormElement;
+    const entryLink = document.querySelector('.form-singup__link') as HTMLLinkElement;
+
+    form?.addEventListener('submit', (evt: Event) => {
+        evt?.preventDefault();
+
+        const formData = getFieldsForm(form);
+
+        if (typeof formData === 'object') {
+            setLayout(Layout.LOGIN, { cb: initLoginPage });
+        }
+    });
 
     entryLink?.addEventListener('click', (evt) => {
         evt.preventDefault();

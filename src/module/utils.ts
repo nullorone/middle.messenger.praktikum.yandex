@@ -1,4 +1,4 @@
-import { Validate } from '../service/validate/validate';
+import { validate as validateService } from '../service/validate/validate';
 
 export interface OptionsType {
     cb?: () => void
@@ -24,14 +24,21 @@ export function setLayout(template: string | HTMLElement | null, options?: Optio
 
 export function getFieldsForm(form: HTMLFormElement): Record<string, string> | undefined {
     const fields: Record<string, string> = {};
-    const validateService = new Validate();
     const data = new FormData(form);
 
     // @ts-expect-error
     for (const [key, value] of data) {
         const input = form.querySelector(`#${key as string}`) as HTMLInputElement;
-        if (value && validateService.isValidField(input)) {
+        if (value && key !== 'password_again' && validateService.isValidField(input)) {
             fields[key] = value;
+        } else if (value && key === 'password_again') {
+            const passwordValue = data.get('password');
+
+            if (passwordValue && passwordValue !== value) {
+                const field = input.parentNode as HTMLFieldSetElement;
+                field.classList.add('error');
+                return;
+            }
         } else {
             const field = input.parentNode as HTMLFieldSetElement;
             field.classList.add('error');
@@ -42,4 +49,22 @@ export function getFieldsForm(form: HTMLFormElement): Record<string, string> | u
     console.log(fields);
 
     return fields;
+}
+
+export function validateInput(evt: FocusEvent, isBlur?: boolean): void {
+    const target = evt.target as HTMLInputElement;
+    const field = target.parentNode as HTMLFieldSetElement;
+
+    if (isBlur) {
+        if (!target.value) {
+            field.classList.remove('show');
+        }
+
+        if (!validateService.isValidField(target)) {
+            field.classList.add('error');
+        }
+    } else {
+        field.classList.add('show');
+        field.classList.remove('error');
+    }
 }
