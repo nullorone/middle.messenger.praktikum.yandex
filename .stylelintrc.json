@@ -8,5 +8,6 @@
     "selector-class-pattern": ".",
     "no-descending-specificity": null,
     "at-rule-empty-line-before": "always"
-  }
+  },
+  "ignoreFiles": ["dist/*"]
 }
