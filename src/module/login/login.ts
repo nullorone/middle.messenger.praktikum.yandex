@@ -1,12 +1,11 @@
 import template from '../../ui/markup/login/login.hbs';
-import { getFieldsForm, setLayout } from '../utils';
+import { getFieldsForm, setLayout, validateInput } from '../utils';
 import { Layout } from '../const';
 import { initSingupPage } from '../singup/singup';
 import { initChatPage } from '../chat/chat';
 import Block from '../../components/block/block';
 import { Button, ButtonSize, ButtonStyle } from '../../components/button/button';
 import { AuthField } from '../../components/auth-field/auth-field';
-import { Validate } from '../../service/validate/validate';
 
 interface ILoginPage {
     authFields: AuthField[]
@@ -84,24 +83,4 @@ export function initLoginPage(): void {
 
         setLayout(Layout.SINGUP, { cb: initSingupPage });
     });
-}
-
-const validateService = new Validate();
-
-function validateInput(evt: FocusEvent, isBlur?: boolean): void {
-    const target = evt.target as HTMLInputElement;
-    const field = target.parentNode as HTMLFieldSetElement;
-
-    if (isBlur) {
-        if (!target.value) {
-            field.classList.remove('show');
-        }
-
-        if (!validateService.isValidField(target)) {
-            field.classList.add('error');
-        }
-    } else {
-        field.classList.add('show');
-        field.classList.remove('error');
-    }
 }
