@@ -14,8 +14,6 @@ interface Options {
 
 const TIMEOUT_DELAY = 5000;
 
-// Самая простая версия. Реализовать штучку со всеми проверками им предстоит в конце спринта
-// Необязательный метод
 function queryStringify(data: Record<string, string>): string {
     if (typeof data !== 'object') {
         throw new Error('Data должна быть объектом');
