@@ -1,23 +1,23 @@
 @import "/src/ui/styles/global";
 
-$link-item__height: 32px;
+$link-item-height: 32px;
 
 .link-item {
-  height: $link-item__height;
+    height: $link-item-height;
 
-  & + & {
-    border-top: 1px solid $kuznetlas;
-  }
-
-  &__link {
-    display: block;
-    font-size: 13px;
-    line-height: $link-item__height;
-    color: $iskiksa;
-    text-decoration: none;
-
-    &.exit {
-      color: $borisorzhinsk;
+    & + & {
+        border-top: 1px solid $kuznetlas;
     }
-  }
+
+    &__link {
+        display: block;
+        font-size: 13px;
+        line-height: $link-item-height;
+        color: $iskiksa;
+        text-decoration: none;
+
+        &.exit {
+            color: $borisorzhinsk;
+        }
+    }
 }

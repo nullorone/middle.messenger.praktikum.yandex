@@ -1,46 +1,48 @@
 @import "/src/ui/styles/global";
 
 .profile {
-  @include absolute(0);
-  display: flex;
+    @include absolute(0);
 
-  &__nav {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-basis: 64px;
-    background-color: $polebuga;
-    border-right: 1px solid $kuznetlas;
-  }
 
-  &__nav-link {
-    @include clear-font;
-    display: block;
-    width: 28px;
-    height: 28px;
-    background-color: $iskiksa;
-    background-image: url("/src/static/arrow.svg");
-    background-position: 9px center;
-    background-size: 11px 10px;
-    background-repeat: no-repeat;
-    border-radius: 50%;
-    transition: 0.6s background-color;
-
-    &:hover {
-      background-color: darken($iskiksa, 10%) ;
+    &__nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-basis: 64px;
+        background-color: $polebuga;
+        border-right: 1px solid $kuznetlas;
     }
-  }
 
-  &__main {
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding-top: 60px;
-  }
+    &__nav-link {
+        @include clear-font;
 
-  &__form {
-    width: 510px;
-    margin-top: 20px;
-  }
+        display: block;
+        width: 28px;
+        height: 28px;
+        background-color: $iskiksa;
+        background-image: url("/src/static/arrow.svg");
+        background-position: 9px center;
+        background-size: 11px 10px;
+        background-repeat: no-repeat;
+        border-radius: 50%;
+        transition: 0.6s background-color;
+
+        &:hover {
+            background-color: darken($iskiksa, 10%);
+        }
+    }
+
+    &__main {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 60px;
+    }
+
+    &__form {
+        width: 510px;
+        margin-top: 117px;
+    }
 }

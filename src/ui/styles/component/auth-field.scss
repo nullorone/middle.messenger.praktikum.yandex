@@ -1,76 +1,78 @@
 @import "/src/ui/styles/global";
 
 .auth-field {
-  @include relative();
-  margin: 0;
-  margin-top: 15px;
-  padding: 0;
-  padding-top: 17px;
-  border: none;
+    @include relative;
 
-  & + & {
-    margin-top: 10px;
-  }
-
-  &.show {
-    .form__label {
-      top: 0;
-      bottom: initial;
-      font-size: 9px;
-    }
-
-    .form__input::placeholder {
-      opacity: 0;
-    }
-  }
-
-  &.error {
-    .form__field-text {
-      opacity: 1;
-    }
-  }
-
-  &__label {
-    @include absolute(22px, null, null, 0);
-    font-size: 13px;
-    line-height: 1;
-    color: $shavsky;
-    transition: all 1.3s;
-  }
-
-  &__input {
-    display: inline-block;
-    width: 100%;
-    height: 20px;
+    margin: 0;
+    margin-top: 15px;
     padding: 0;
-    padding-right: 10px;
-    padding-bottom: 7px;
-    font-family: Inter, Arial, sans-serif;
-    font-size: 13px;
-    line-height: 1;
-    color: $sterlingru;
-    box-shadow: inset 0 -1px $iskiksa;
+    padding-top: 17px;
     border: none;
-    box-sizing: border-box;
 
-    &:focus {
-      outline: none;
+    & + & {
+        margin-top: 10px;
     }
-  }
 
-  &__input::placeholder {
-    font-size: 13px;
-    line-height: 1;
-    color: $shavsky;
-    opacity: 0;
-  }
+    &.show {
+        .auth-field__label {
+            top: 0;
+            bottom: initial;
+            font-size: 9px;
+        }
 
-  &__tip {
-    display: inline-block;
-    margin-top: 9px;
-    font-size: 8px;
-    line-height: 1;
-    color: $irkutkinsk;
-    opacity: 0;
-  }
+        .auth-field__input::placeholder {
+            opacity: 0;
+        }
+    }
+
+    &.error {
+        .auth-field__tip {
+            opacity: 1;
+        }
+    }
+
+    &__label {
+        @include absolute(22px, null, null, 0);
+
+        font-size: 13px;
+        line-height: 1;
+        color: $shavsky;
+        transition: all 0.6s;
+    }
+
+    &__input {
+        display: inline-block;
+        width: 100%;
+        height: 20px;
+        padding: 0;
+        padding-right: 10px;
+        padding-bottom: 7px;
+        font-family: Inter, Arial, sans-serif;
+        font-size: 13px;
+        line-height: 1;
+        color: $sterlingru;
+        box-shadow: inset 0 -1px $iskiksa;
+        border: none;
+        box-sizing: border-box;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__input::placeholder {
+        font-size: 13px;
+        line-height: 1;
+        color: $shavsky;
+        opacity: 0;
+    }
+
+    &__tip {
+        display: inline-block;
+        margin-top: 9px;
+        font-size: 8px;
+        line-height: 1;
+        color: $irkutkinsk;
+        opacity: 0;
+    }
 }

@@ -1,38 +1,38 @@
 @import "/src/ui/styles/global";
 
 .profile-field {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 32px;
-  margin: 0;
-  padding: 0;
-  border: none;
-
-  & + & {
-    border-top: 1px solid $kuznetlas;
-  }
-
-  &__label {
-    font-size: 13px;
-    line-height: 1;
-    white-space: nowrap;
-    color: $sterlingru;
-  }
-
-  &__input {
-    width: 70%;
-    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 32px;
+    margin: 0;
     padding: 0;
-    font-family: Inter, Arial, sans-serif;
-    font-size: 13px;
-    line-height: 100%;
-    text-align: right;
-    color: $shavsky;
     border: none;
 
-    &:disabled {
-      background-color: transparent;
+    & + & {
+        border-top: 1px solid $kuznetlas;
     }
-  }
+
+    &__label {
+        font-size: 13px;
+        line-height: 1;
+        white-space: nowrap;
+        color: $sterlingru;
+    }
+
+    &__input {
+        width: 70%;
+        height: 100%;
+        padding: 0;
+        font-family: Inter, Arial, sans-serif;
+        font-size: 13px;
+        line-height: 100%;
+        text-align: right;
+        color: $shavsky;
+        border: none;
+
+        &:disabled {
+            background-color: transparent;
+        }
+    }
 }

@@ -1,11 +1,11 @@
-<li class="chat-main__item main-item{{#if isUserMsg}} main-item_user{{/if}}{{#if is_media}} main-item_media{{/if}}">
-    {{#if is_media}}
+<li class="chat-main__item main-item{{#if isUserMsg}} main-item_user{{/if}}{{#if isMedia}} main-item_media{{/if}}">
+    {{#if isMedia}}
         <div class="main-item__img"></div>
     {{else}}
         <p class="main-item__text">{{{message}}}</p>
     {{/if}}
     <div class="main-item__meta-block{{#if isReadMsg}} active{{/if}}">
         {{#if isUserMsg}}<span class="main-item__status">Статус сообщения</span>{{/if}}
-        <span class="main-item__timestamp{{#if is_media}} main-item__timestamp_active{{/if}}">{{timestamp}}</span>
+        <span class="main-item__timestamp{{#if isMedia}} main-item__timestamp_active{{/if}}">{{timestamp}}</span>
     </div>
 </li>

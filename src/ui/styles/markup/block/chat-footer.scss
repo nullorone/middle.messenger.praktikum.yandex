@@ -1,37 +1,39 @@
 @import "/src/ui/styles/global";
 
 .chat-footer {
-  display: flex;
-  align-items: center;
-  height: 54px;
-  border-top: 1px solid $kuznetlas;
+    display: flex;
+    align-items: center;
+    height: 54px;
+    border-top: 1px solid $kuznetlas;
 
-  &__media {
-    @include relative();
-    flex-shrink: 0;
-    width: 32px;
-    height: 32px;
-    margin-right: 10px;
+    &__media {
+        @include relative;
 
-    &:hover > .media-block {
-      visibility: visible;
-      opacity: 1;
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        margin-right: 10px;
+
+        &:hover > .media-block {
+            visibility: visible;
+            opacity: 1;
+        }
     }
-  }
 
-  &__media-icon {
-    @include absolute(0);
-    @include clear-font();
-    width: 100%;
-    height: 100%;
-    background-image: url("/src/static/clip.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    cursor: pointer;
-  }
+    &__media-icon {
+        @include absolute(0);
+        @include clear-font;
 
-  &__form {
-    flex-grow: 1;
-  }
+        width: 100%;
+        height: 100%;
+        background-image: url("/src/static/clip.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        cursor: pointer;
+    }
+
+    &__form {
+        flex-grow: 1;
+    }
 }
