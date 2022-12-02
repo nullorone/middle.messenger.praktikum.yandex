@@ -1,4 +1,14 @@
-class Validate {
+enum InputId {
+    LOGIN = 'login',
+    PASSWORD = 'password',
+    EMAIL = 'email',
+    FIRST_NAME = 'first_name',
+    SECOND_NAME = 'second_name',
+    PHONE = 'phone',
+    MESSAGE = 'message'
+}
+
+export class Validate {
     name (value: string): boolean {
         return this.isValid(
             /^[A-ZA-Я]+[A-Za-zA-Яа-я-]+$/,
@@ -36,6 +46,19 @@ class Validate {
 
     message (value: string): boolean {
         return value !== '';
+    }
+
+    isValidField(target: HTMLInputElement): boolean {
+        const { id, value } = target;
+
+        switch (id) {
+            case InputId.LOGIN:
+                return this.login(value);
+            case InputId.PASSWORD:
+                return this.password(value);
+            default:
+                return false;
+        }
     }
 
     private isValid (regex: RegExp | RegExp[], value: string): boolean {

@@ -8,9 +8,14 @@ export interface IAuthField {
     placeholder: string
     type?: string
     tip?: string
+    offAutoComplete?: boolean
     className_field?: string
     className_label?: string
     className_input?: string
+    events?: {
+        focusin?: (evt: FocusEvent) => void
+        focusout?: (evt: FocusEvent) => void
+    }
 }
 
 export class AuthField extends Block {
