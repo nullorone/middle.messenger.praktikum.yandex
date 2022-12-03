@@ -74,6 +74,14 @@ export default abstract class Block<P extends Record<string, any> = any> {
         });
     }
 
+    private removeEvents(): void {
+        const { events = {} } = this.props as P & { events: Record<string, () => void> };
+
+        Object.keys(events).forEach(eventName => {
+            this._element?.removeEventListener(eventName, events[eventName]);
+        });
+    }
+
     init(): void {
         this.createResources();
 
@@ -121,6 +129,8 @@ export default abstract class Block<P extends Record<string, any> = any> {
     }
 
     private _render(): void {
+        this.removeEvents();
+
         this._element?.append(this.render());
 
         this.addEvents();
