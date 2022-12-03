@@ -1,56 +1,64 @@
 @import "/src/ui/styles/global";
 
 .form-panel {
-  &__field {
-    @include relative();
-    margin: 0;
-    padding: 0;
-    border: none;
-  }
+    &__field {
 
-  &__input {
-    display: block;
-    margin: 0;
-    padding: 0;
-    padding-left: 34px;
-    width: 100%;
-    height: 32px;
-    font-family: Inter, Arial, sans-serif;
-    font-size: 12px;
-    line-height: 32px;
-    color: $sterlingru;
-    background-color: $neryushikha;
-    border-radius: 5px;
-    box-sizing: border-box;
-    border: none;
+        @include relative;
 
-    &:focus + .form-panel__label,
-    &:valid + .form-panel__label {
-      @include clear-font;
-      width: 100%;
+        margin: 0;
+        padding: 0;
+        border: none;
     }
 
-    &:focus + .form-panel__label::before,
-    &:valid + .form-panel__label::before {
-      left: 10px;
-    }
-  }
+    &__input {
+        display: block;
+        margin: 0;
+        padding: 0;
+        padding-left: 34px;
+        width: 100%;
+        height: 32px;
+        font-family: Inter, Arial, sans-serif;
+        font-size: 12px;
+        line-height: 32px;
+        color: $sterlingru;
+        background-color: $neryushikha;
+        border-radius: 5px;
+        box-sizing: border-box;
+        border: none;
 
-  &__label {
-    @include absolute-top-center();
-    font-size: 12px;
-    line-height: 1;
-    color: $shavsky;
+        &:focus + .form-panel__label,
+        &:valid + .form-panel__label {
 
-    &::before {
-      content: "";
-      @include absolute(50%, null, null, -24px);
-      transform: translateY(-50%);
-      width: 20px;
-      height: 20px;
-      background-image: url("/src/static/magnifier.svg");
-      background-repeat: no-repeat;
-      background-size: contain;
+            @include clear-font;
+
+            width: 100%;
+        }
+
+        &:focus + .form-panel__label::before,
+        &:valid + .form-panel__label::before {
+            left: 10px;
+        }
     }
-  }
+
+    &__label {
+
+        @include absolute-top-center;
+
+        font-size: 12px;
+        line-height: 1;
+        color: $shavsky;
+
+        &::before {
+            content: "";
+
+            @include absolute(50%, null, null, -24px);
+
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background-image: url("/src/static/magnifier.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    }
 }

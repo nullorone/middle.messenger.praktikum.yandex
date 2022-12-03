@@ -1,5 +1,5 @@
 @import "./colors";
-@import "./font";
+
 @import "./mixins";
 
 html,
@@ -16,13 +16,16 @@ body {
     font-weight: 500;
 }
 
-#root {
+#root,
+#root > div {
     height: 100%;
 }
 
 .page-container {
+
     @include absolute(0);
-    background-image: radial-gradient(50% 50% at 50% 50%, #20c9c9 0%, rgba(187, 44, 255, 0.35) 100%);
+
+    background-image: radial-gradient(50% 50% at 50% 50%, #20c9c9 0%, rgb(187 44 255 / 35%) 100%);
 }
 
 .container {
@@ -43,6 +46,5 @@ body {
     white-space: nowrap;
     border: 0;
     clip: rect(0 0 0 0);
-    -webkit-clip-path: inset(100%);
     clip-path: inset(100%);
 }

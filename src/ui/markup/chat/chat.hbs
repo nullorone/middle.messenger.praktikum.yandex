@@ -10,55 +10,9 @@
             </fieldset>
         </form>
         <ul class="panel__list">
-            {{>panel-item
-                name="Андрей"
-                text="Изображение"
-                timestamp="10:49"
-                count="2"
-            }}
-            {{>panel-item
-                name="Киноклуб"
-                text="стикер"
-                timestamp="12:00"
-                isUserMsg="true"
-            }}
-            {{>panel-item
-                name="Илья"
-                text="Друзья, у меня для вас особенный выпуск новостей! Слушайте"
-                timestamp="15:12"
-                count="4"
-            }}
-            {{>panel-item
-                name="Вадим"
-                text="Круто!"
-                timestamp="Пт"
-                isUserMsg="true"
-            }}
-            {{>panel-item
-                name="тет-а-теты"
-                text="И Human Interface Guidelines и Material Design рекомендуют подключиться"
-                timestamp="Ср"
-            }}
-            {{>panel-item
-                name="1, 2, 3"
-                text="Миллионы россиян ежедневно проводят десятки часов свое образно"
-                timestamp="Пн"
-            }}
-            {{>panel-item
-                name="Design Destroyer"
-                text="В 2008 году художник Jon Rafman  начал собирать грибы"
-                timestamp="Пн"
-            }}
-            {{>panel-item
-                name="Day."
-                text="Так увлёкся работой по курсу, что совсем забыл его анонсировать"
-                timestamp="1 Мая 2020"
-            }}
-            {{>panel-item
-                name="Стас Рогозин"
-                text="Можно или сегодня или завтра вечером."
-                timestamp="12 Апр 2020"
-            }}
+            {{#each panelItems}}
+                {{{this}}}
+            {{/each}}
         </ul>
     </div>
     <div class="chat-page__block">
@@ -74,8 +28,9 @@
                 <span class="chat-header__option-icon">Иконка опций</span>
                 <div class="chat-header__option-block option-block">
                     <ul class="option-block__list">
-                        {{>option-item class_icon="plus" icon_text="Иконка опции добавления" text="Добавить пользователя"}}
-                        {{>option-item class_icon="delete" icon_text="Иконка опции удаления" text="Удалить пользователя"}}
+                        {{#each optionItems}}
+                            {{{this}}}
+                        {{/each}}
                     </ul>
                 </div>
             </div>
@@ -83,22 +38,9 @@
         <main class="chat__main chat-main">
             <span class="chat-main__timestamp">19 июля</span>
             <ul class="chat-main__list">
-                {{>main-item
-                        message="Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
-/n
-Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро."
-                    timestamp="11:56"
-                }}
-                {{>main-item
-                    is_media="true"
-                    timestamp="11:56"
-                }}
-                {{>main-item
-                    message="Круто!"
-                    timestamp="12:00"
-                    isUserMsg="true"
-                    isReadMsg="true"
-                }}
+                {{#each mainItems}}
+                    {{{this}}}
+                {{/each}}
             </ul>
         </main>
         <footer class="chat__footer chat-footer">
@@ -106,9 +48,9 @@
                 <span class="chat-footer__media-icon">Иконка медиа файлов</span>
                 <div class="chat-footer__media-block media-block">
                     <ul class="media-block__list">
-                        {{>option-item class_icon="photo" text="Фото или Видео"}}
-                        {{>option-item class_icon="file" text="Файл"}}
-                        {{>option-item class_icon="location" text="Локации"}}
+                        {{#each optionMediaItems}}
+                            {{{this}}}
+                        {{/each}}
                     </ul>
                 </div>
             </div>
@@ -116,22 +58,17 @@
                 <fieldset class="form-chat__field">
                     <input id="message" name="message" type="text" required class="form-chat__input">
                     <label for="message" class="form-chat__label">Сообщение</label>
+                    <span class="form-chat__tip">Сообщение не должно быть пустым</span>
                 </fieldset>
                 <button type="submit" class="form-chat__button">Отправить сообщение</button>
             </form>
         </footer>
     </div>
 </div>
-<dialog {{#if is_modal}}open{{/if}} class="modal modal-chat">
+<dialog {{#if isModal}}open{{/if}} class="modal modal-chat">
     <form action="#" class="modal-chat__form form-modal">
         <p class="form-modal__text">{{#if isAddUser}}Добавить{{else}}Удалить{{/if}} пользователя</p>
-        {{>auth-field id="login" label="Логин" placeholder="Логин"}}
-        {{>button
-                type="submit"
-                class="modal-chat__button"
-                size="veicpesia"
-                style="qhunked"
-                text="Добавить"
-        }}
+        {{{authField}}}
+        {{{button}}}
     </form>
 </dialog>

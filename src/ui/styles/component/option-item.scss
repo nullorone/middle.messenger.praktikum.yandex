@@ -1,70 +1,74 @@
 @import "/src/ui/styles/global";
 
 .option-item {
-  padding: 5px 15px;
-  transition: 0.4s background-color;
+    padding: 5px 15px;
+    transition: 0.4s background-color;
 
-  &:hover {
-    background-color: darken($abashi, 10%);
-  }
-
-  & + & {
-    margin-top: 5px;
-  }
-
-  &__link {
-    @include relative();
-    display: block;
-    height: 22px;
-    padding-left: 37px;
-    font-size: 12px;
-    line-height: 22px;
-    color: $sterlingru;
-    text-decoration: none;
-
-    &:visited {
-      color: $sterlingru;
+    &:hover {
+        background-color: darken($abashi, 10%);
     }
 
-    &::before {
-      @include absolute(50%, null, null, 0);
-      transform: translateY(-50%);
-      content: "";
-      width: 22px;
-      height: 22px;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: contain;
+    & + & {
+        margin-top: 5px;
     }
 
-    &.plus {
-      &::before {
-        background-image: url("/src/static/plus.svg");
-      }
-    }
+    &__link {
 
-    &.delete {
-      &::before {
-        background-image: url("/src/static/delete.svg");
-      }
-    }
+        @include relative;
 
-    &.photo {
-      &::before {
-        background-image: url("/src/static/union-blue.svg");
-      }
-    }
+        display: block;
+        height: 22px;
+        padding-left: 37px;
+        font-size: 12px;
+        line-height: 22px;
+        color: $sterlingru;
+        text-decoration: none;
 
-    &.file {
-      &::before {
-        background-image: url("/src/static/file.svg");
-      }
-    }
+        &:visited {
+            color: $sterlingru;
+        }
 
-    &.location {
-      &::before {
-        background-image: url("/src/static/location.svg");
-      }
+        &::before {
+
+            @include absolute(50%, null, null, 0);
+
+            transform: translateY(-50%);
+            content: "";
+            width: 22px;
+            height: 22px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        &.plus {
+            &::before {
+                background-image: url("/src/static/plus.svg");
+            }
+        }
+
+        &.delete {
+            &::before {
+                background-image: url("/src/static/delete.svg");
+            }
+        }
+
+        &.photo {
+            &::before {
+                background-image: url("/src/static/union-blue.svg");
+            }
+        }
+
+        &.file {
+            &::before {
+                background-image: url("/src/static/file.svg");
+            }
+        }
+
+        &.location {
+            &::before {
+                background-image: url("/src/static/location.svg");
+            }
+        }
     }
-  }
 }
