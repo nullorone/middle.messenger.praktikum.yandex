@@ -13,7 +13,6 @@
     }
 
     &__link {
-
         @include relative;
 
         display: block;
@@ -29,7 +28,6 @@
         }
 
         &::before {
-
             @include absolute(50%, null, null, 0);
 
             transform: translateY(-50%);

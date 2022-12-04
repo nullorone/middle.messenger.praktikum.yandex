@@ -1,7 +1,6 @@
 @import "/src/ui/styles/global";
 
 .media-block {
-
     @include absolute(-150px, null, null, -10px);
 
     width: 162px;
@@ -17,7 +16,6 @@
     transition: 0.4s opacity;
 
     &__list {
-
         @include clear-list;
     }
 }

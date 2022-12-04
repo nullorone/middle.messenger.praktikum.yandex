@@ -6,7 +6,6 @@
 
     &__block,
     &__chat-block {
-
         @include relative;
 
         flex-grow: 1;
@@ -17,7 +16,6 @@
     }
 
     &__text {
-
         @include absolute-top-center;
 
         font-size: 12px;

@@ -7,7 +7,6 @@
     border-top: 1px solid $kuznetlas;
 
     &__media {
-
         @include relative;
 
         flex-shrink: 0;
@@ -22,9 +21,7 @@
     }
 
     &__media-icon {
-
         @include absolute(0);
-
         @include clear-font;
 
         width: 100%;

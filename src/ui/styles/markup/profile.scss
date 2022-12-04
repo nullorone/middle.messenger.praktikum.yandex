@@ -1,7 +1,6 @@
 @import "/src/ui/styles/global";
 
 .profile {
-
     @include absolute(0);
 
     display: flex;
@@ -16,7 +15,6 @@
     }
 
     &__nav-link {
-
         @include clear-font;
 
         display: block;

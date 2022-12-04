@@ -1,7 +1,6 @@
 @import "/src/ui/styles/global";
 
 .option-block {
-
     @include absolute(50px, -10px, null, null);
 
     width: 210px;
@@ -17,7 +16,6 @@
     transition: 0.4s opacity;
 
     &__list {
-
         @include clear-list;
     }
 }

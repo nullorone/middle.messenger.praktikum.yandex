@@ -16,7 +16,6 @@
     }
 
     &__link {
-
         @include relative;
 
         display: inline-block;
@@ -46,7 +45,6 @@
     }
 
     &__list {
-
         @include clear-list;
 
         margin-top: 14px;

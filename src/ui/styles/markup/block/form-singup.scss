@@ -1,7 +1,6 @@
 @import "/src/ui/styles/global";
 
 .form-singup {
-
     @include absolute-top-center;
 
     width: 340px;
@@ -28,7 +27,6 @@
     }
 
     &__link {
-
         @include absolute(null, null, 20px, 50%);
 
         transform: translateX(-50%);

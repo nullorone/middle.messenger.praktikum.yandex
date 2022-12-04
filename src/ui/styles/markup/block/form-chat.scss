@@ -4,7 +4,6 @@
     display: flex;
 
     &__field {
-
         @include relative;
 
         margin: 0;
@@ -21,7 +20,6 @@
     }
 
     &__label {
-
         @include absolute(50%, null, null, 20px);
 
         transform: translateY(-50%);
@@ -56,7 +54,6 @@
     }
 
     &__button {
-
         @include clear-font;
 
         display: block;
@@ -76,7 +73,6 @@
     }
 
     &__tip {
-
         @include absolute(-32px, null, null, 0);
 
         padding: 4px 10px;

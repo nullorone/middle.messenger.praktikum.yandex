@@ -1,5 +1,4 @@
 @import "./colors";
-
 @import "./mixins";
 
 html,
@@ -22,7 +21,6 @@ body {
 }
 
 .page-container {
-
     @include absolute(0);
 
     background-image: radial-gradient(50% 50% at 50% 50%, #20c9c9 0%, rgb(187 44 255 / 35%) 100%);

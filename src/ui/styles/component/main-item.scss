@@ -1,7 +1,6 @@
 @import "/src/ui/styles/global";
 
 .main-item {
-
     @include relative;
 
     margin-top: 10px;
@@ -58,7 +57,6 @@
     }
 
     &__meta-block {
-
         @include absolute(null, 11px, 11px, null);
 
         display: flex;
@@ -71,7 +69,6 @@
     }
 
     &__status {
-
         @include clear-font;
 
         display: block;

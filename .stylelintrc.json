@@ -6,8 +6,7 @@
     "scss/at-if-no-null": null,
     "scss/no-global-function-names": null,
     "selector-class-pattern": ".",
-    "no-descending-specificity": null,
-    "at-rule-empty-line-before": "always"
+    "no-descending-specificity": null
   },
   "ignoreFiles": ["dist/*"]
 }

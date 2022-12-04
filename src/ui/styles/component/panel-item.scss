@@ -1,7 +1,6 @@
 @import "/src/ui/styles/global";
 
 .panel-item {
-
     @include relative;
 
     display: flex;
@@ -25,7 +24,6 @@
     }
 
     &__img {
-
         @include clear-font;
 
         display: block;
@@ -60,7 +58,6 @@
         }
 
         &:last-child {
-
             @include text-overflow(2);
         }
 
@@ -70,7 +67,6 @@
     }
 
     &__status-block {
-
         @include absolute(0, 10px, 0, null);
 
         display: flex;
