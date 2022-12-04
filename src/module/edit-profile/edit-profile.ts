@@ -5,10 +5,12 @@ import Block from '../../components/block/block';
 import { ProfileField } from '../../components/profile-field/profile-field';
 import { Button, ButtonSize, ButtonStyle } from '../../components/button/button';
 import { initProfilePage } from '../profile/profile';
+import { Avatar } from '../../components/avatar/avatar';
 
 export interface IEditProfilePage {
     profileFields: ProfileField[]
     button: Button
+    avatar: Avatar
 }
 
 class EditProfilePage extends Block {
@@ -89,6 +91,8 @@ export function getLayout(isPasswordPage?: boolean): HTMLElement | null {
     const fields = isPasswordPage ? PASSWORD_FIELDS_PROPS : PROFILE_FIELDS_PROPS;
     const profileFields = fields.map((item) => new ProfileField(item));
 
+    const avatar = new Avatar({});
+
     const button = new Button({
         type: 'submit',
         className: 'profile-form__button',
@@ -104,7 +108,7 @@ export function getLayout(isPasswordPage?: boolean): HTMLElement | null {
         }
     });
 
-    const page = new EditProfilePage({ profileFields, button });
+    const page = new EditProfilePage({ profileFields, button, avatar });
 
     return page.getContent();
 }

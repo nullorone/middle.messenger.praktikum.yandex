@@ -1,0 +1,4 @@
+<div class="profile__avatar avatar {{isEditDisabled}}">
+    <img src="{{#if src}}{{src}}{{else}}#{{/if}}" class="avatar__img {{#if isShow}}{{else}}hide{{/if}}" alt="Аватар пользователя">
+    <button type="button" class="avatar__button">{{#if buttonText}}{{buttonText}}{{else}}Поменять аватар{{/if}}</button>
+</div>

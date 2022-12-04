@@ -7,6 +7,7 @@ import Block from '../../components/block/block';
 import { IProfileField, ProfileField } from '../../components/profile-field/profile-field';
 import { LinkItem } from '../../components/link-item/link-item';
 import { Button, ButtonSize, ButtonStyle } from '../../components/button/button';
+import { Avatar } from '../../components/avatar/avatar';
 
 export interface IProfilePage {
     username: string
@@ -14,6 +15,7 @@ export interface IProfilePage {
     linkItems: LinkItem[]
     button: Button
     buttonModal: Button
+    avatar: Avatar
     isModal?: boolean
 }
 
@@ -113,6 +115,18 @@ export function getLayout(): HTMLElement | null {
     const profileFields = getProfileFieldsProps().map((item) => new ProfileField(item));
     const linkItems = LINK_ITEMS_PROPS.map((item) => new LinkItem(item));
 
+    const avatar = new Avatar({
+        events: {
+            click: (evt) => {
+                evt.preventDefault();
+
+                const modal = document.querySelector('.modal');
+
+                modal?.setAttribute('open', 'true');
+            }
+        }
+    });
+
     const button = new Button({
         type: 'submit',
         className: 'profile-form__button hide',
@@ -139,23 +153,13 @@ export function getLayout(): HTMLElement | null {
         }
     });
 
-    const page = new ProfilePage({ username: 'Иван', profileFields, linkItems, button, buttonModal });
+    const page = new ProfilePage({ username: 'Иван', profileFields, linkItems, button, buttonModal, avatar });
 
     return page.getContent();
 }
 
 export function initProfilePage(): void {
-    const avatarButton = document.querySelector('.avatar__button');
-
     backNavLinkHandler(true);
-
-    avatarButton?.addEventListener('click', (evt) => {
-        evt.preventDefault();
-
-        const modal = document.querySelector('.modal');
-
-        modal?.setAttribute('open', 'true');
-    });
 }
 
 function backNavLinkHandler(isProfilePage = false): void {
