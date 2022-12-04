@@ -1,6 +1,7 @@
 @import "/src/ui/styles/global";
 
 .wrapper {
+
     @include absolute-top-center;
 
     text-align: center;

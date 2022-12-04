@@ -1,9 +1,11 @@
 @import "/src/ui/styles/global";
 
 .profile-form {
+
     @include relative;
 
     &__username {
+
         @include absolute-top-center(-97px);
 
         margin: 0;
@@ -14,6 +16,7 @@
     }
 
     &__link-list {
+
         @include clear-list;
 
         margin-top: 60px;

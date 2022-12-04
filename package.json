@@ -8,7 +8,7 @@
     "build": "parcel build ./src/index.html '*.hbs' --public-url ./",
     "lint": "npm run eslint && npm run stylelint",
     "eslint": "eslint **/*.ts",
-    "stylelint": "stylelint **/**/*.scss"
+    "stylelint": "stylelint **/**/*.scss --allow-empty-input"
   },
   "engines": {
     "node": ">=12.22.6"

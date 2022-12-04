@@ -30,6 +30,7 @@
     }
 
     &__option-wrapper {
+
         @include relative;
 
         margin-left: auto;
@@ -53,6 +54,7 @@
     }
 
     &__option-icon {
+
         @include clear-font;
 
         display: block;

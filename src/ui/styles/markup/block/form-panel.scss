@@ -2,6 +2,7 @@
 
 .form-panel {
     &__field {
+
         @include relative;
 
         margin: 0;
@@ -27,6 +28,7 @@
 
         &:focus + .form-panel__label,
         &:valid + .form-panel__label {
+
             @include clear-font;
 
             width: 100%;
@@ -39,6 +41,7 @@
     }
 
     &__label {
+
         @include absolute-top-center;
 
         font-size: 12px;

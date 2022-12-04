@@ -2,6 +2,7 @@
 
 .index {
     &__nav {
+
         @include absolute-top-center(0);
 
         background-color: rgba($sosokhov, 0.4);
@@ -9,6 +10,7 @@
     }
 
     &__list {
+
         @include clear-list;
 
         display: flex;

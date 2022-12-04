@@ -1,6 +1,7 @@
 @import "/src/ui/styles/global";
 
 .modal {
+
     @include absolute(0);
 
     width: 100%;
@@ -11,6 +12,7 @@
     background-color: rgba($surgut, 0.4);
 
     &__form {
+
         @include absolute-top-center;
     }
 }

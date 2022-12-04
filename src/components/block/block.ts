@@ -74,6 +74,14 @@ export default abstract class Block<P extends Record<string, any> = any> {
         });
     }
 
+    private removeEvents(): void {
+        const { events = {} } = this.props as P & { events: Record<string, () => void> };
+
+        Object.keys(events).forEach(eventName => {
+            this._element?.removeEventListener(eventName, events[eventName]);
+        });
+    }
+
     init(): void {
         this.createResources();
 
@@ -98,13 +106,13 @@ export default abstract class Block<P extends Record<string, any> = any> {
         });
     }
 
-    _componentDidUpdate(oldProps: P, newProps: P): void {
-        if (this.componentDidUpdate(oldProps, newProps)) {
+    _componentDidUpdate(): void {
+        if (this.componentDidUpdate()) {
             this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
         }
     }
 
-    componentDidUpdate(oldProps: P, newProps: P): boolean {
+    componentDidUpdate(): boolean {
         return true;
     }
 
@@ -121,6 +129,8 @@ export default abstract class Block<P extends Record<string, any> = any> {
     }
 
     private _render(): void {
+        this.removeEvents();
+
         this._element?.append(this.render());
 
         this.addEvents();
@@ -130,7 +140,7 @@ export default abstract class Block<P extends Record<string, any> = any> {
         return new DocumentFragment();
     }
 
-    protected compile(template: (context: any) => string, context: any): DocumentFragment {
+    protected compile(template: (context: unknown) => string, context: Record<string, unknown>): DocumentFragment {
         const contextAndStubs = { ...context };
 
         Object.entries(this.children).forEach(([name, component]) => {
@@ -156,6 +166,7 @@ export default abstract class Block<P extends Record<string, any> = any> {
 
             component.getContent()?.append(...Array.from(stub.childNodes));
 
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             stub.replaceWith(component.getContent()!);
         };
 
