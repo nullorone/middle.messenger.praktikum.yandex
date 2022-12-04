@@ -31,8 +31,10 @@ function queryStringify(data: Record<string, string>): string {
 
 export default class HTTPTransport {
     get: HTTPMethod = async (url, options) => {
+        const correctUrl = options.data ? `${url}${queryStringify(options.data as Record<string, string>)}` : url;
+
         return await this.request(
-            url,
+            correctUrl,
             { ...options, method: METHODS.GET },
             options.timeout
         );
@@ -75,15 +77,9 @@ export default class HTTPTransport {
             const xhr = new XMLHttpRequest();
             const isGet = method === METHODS.GET;
 
-            let correctUrl = url;
-
-            if (isGet && !!data) {
-                correctUrl = `${url}${queryStringify(data as Record<string, string>)}`;
-            }
-
             xhr.open(
                 method,
-                correctUrl
+                url
             );
 
             Object.entries(headers).forEach(([key, value]) => {
