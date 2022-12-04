@@ -12,6 +12,8 @@ interface Options {
     timeout?: number
 }
 
+type HTTPMethod = (url: string, options: Options, timeout?: number) => Promise<unknown>;
+
 const TIMEOUT_DELAY = 5000;
 
 function queryStringify(data: Record<string, string>): string {
@@ -28,7 +30,7 @@ function queryStringify(data: Record<string, string>): string {
 }
 
 export default class HTTPTransport {
-    get = async (url: string, options: Options): Promise<unknown> => {
+    get: HTTPMethod = async (url, options) => {
         return await this.request(
             url,
             { ...options, method: METHODS.GET },
@@ -36,7 +38,7 @@ export default class HTTPTransport {
         );
     };
 
-    post = async (url: string, options: Options): Promise<unknown> => {
+    post: HTTPMethod = async (url, options) => {
         return await this.request(
             url,
             { ...options, method: METHODS.POST },
@@ -44,7 +46,7 @@ export default class HTTPTransport {
         );
     };
 
-    put = async (url: string, options: Options): Promise<unknown> => {
+    put: HTTPMethod = async (url, options) => {
         return await this.request(
             url,
             { ...options, method: METHODS.PUT },
@@ -52,7 +54,7 @@ export default class HTTPTransport {
         );
     };
 
-    delete = async (url: string, options: Options): Promise<unknown> => {
+    delete: HTTPMethod = async (url, options) => {
         return await this.request(
             url,
             { ...options, method: METHODS.DELETE },
@@ -60,7 +62,7 @@ export default class HTTPTransport {
         );
     };
 
-    request = async (url: string, options: Options, timeout = TIMEOUT_DELAY): Promise<unknown> => {
+    request: HTTPMethod = async (url, options, timeout = TIMEOUT_DELAY) => {
         const { headers = {}, method, data } = options;
 
         return await new Promise(function(resolve, reject) {
