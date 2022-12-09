@@ -1,15 +1,13 @@
 import template from '../../ui/markup/profile/profile.hbs';
-import { setLayout } from '../utils';
-import { Layout } from '../const';
-import { initChatPage } from '../chat/chat';
-import { initLoginPage } from '../login/login';
+import { LayoutPathname } from '../const';
 import Block from '../../components/block/block';
 import { IProfileField, ProfileField } from '../../components/profile-field/profile-field';
 import { LinkItem } from '../../components/link-item/link-item';
 import { Button, ButtonSize, ButtonStyle } from '../../components/button/button';
 import { Avatar } from '../../components/avatar/avatar';
+import { router } from '../index';
 
-export interface IProfilePage {
+export interface IProfilePageProps {
     username: string
     profileFields: ProfileField[]
     linkItems: LinkItem[]
@@ -19,8 +17,8 @@ export interface IProfilePage {
     isModal?: boolean
 }
 
-class ProfilePage extends Block {
-    constructor(props: IProfilePage) {
+export class ProfilePage extends Block {
+    constructor(props: IProfilePageProps) {
         super({ ...props });
     }
 
@@ -83,7 +81,7 @@ const LINK_ITEMS_PROPS = [
             click: (evt: MouseEvent) => {
                 evt.preventDefault();
 
-                setLayout(Layout.EDIT_PROFILE, { cb: backNavLinkHandler });
+                router.go(LayoutPathname.EDIT_PROFILE);
             }
         }
     },
@@ -94,7 +92,7 @@ const LINK_ITEMS_PROPS = [
             click: (evt: MouseEvent) => {
                 evt.preventDefault();
 
-                setLayout(Layout.EDIT_PASSWORD, { cb: backNavLinkHandler });
+                router.go(LayoutPathname.EDIT_PASSWORD);
             }
         }
     },
@@ -105,13 +103,13 @@ const LINK_ITEMS_PROPS = [
             click: (evt: MouseEvent) => {
                 evt.preventDefault();
 
-                setLayout(Layout.LOGIN, { cb: initLoginPage });
+                router.go(LayoutPathname.LOGIN);
             }
         }
     }
 ];
 
-export function getLayout(): HTMLElement | null {
+export function getProfileProps(): IProfilePageProps {
     const profileFields = getProfileFieldsProps().map((item) => new ProfileField(item));
     const linkItems = LINK_ITEMS_PROPS.map((item) => new LinkItem(item));
 
@@ -153,27 +151,25 @@ export function getLayout(): HTMLElement | null {
         }
     });
 
-    const page = new ProfilePage({ username: 'Иван', profileFields, linkItems, button, buttonModal, avatar });
-
-    return page.getContent();
+    return { username: 'Иван', profileFields, linkItems, button, buttonModal, avatar };
 }
 
 export function initProfilePage(): void {
     backNavLinkHandler(true);
 }
 
-function backNavLinkHandler(isProfilePage = false): void {
+export function backNavLinkHandler(isProfilePage = false): void {
     const backLink = document.querySelector('.profile__nav-link');
 
     backLink?.addEventListener('click', (evt) => {
         evt.preventDefault();
 
         if (isProfilePage) {
-            setLayout(Layout.CHAT, { cb: initChatPage });
+            router.go(LayoutPathname.CHAT);
             return;
         }
 
-        setLayout(Layout.PROFILE, { cb: initProfilePage });
+        router.go(LayoutPathname.PROFILE);
     });
 }
 

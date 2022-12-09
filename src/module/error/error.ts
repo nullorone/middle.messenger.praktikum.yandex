@@ -1,18 +1,18 @@
 import template from '../../ui/markup/error/error.hbs';
-import { setLayout } from '../utils';
-import { Layout } from '../const';
 import Block from '../../components/block/block';
 import { Button, ButtonSize, ButtonStyle } from '../../components/button/button';
+import { router } from '../index';
+import { LayoutPathname } from '../const';
 
-export interface IErrorPage {
+export interface IErrorPageProps {
     'title-hide': string
     title: string
     description: string
     button: Button
 }
 
-class ErrorPage extends Block {
-    constructor(props: IErrorPage) {
+export class ErrorPage extends Block {
+    constructor(props: IErrorPageProps) {
         super({ ...props });
     }
 
@@ -21,37 +21,27 @@ class ErrorPage extends Block {
     }
 }
 
-export function getLayout(isServerError = false): HTMLElement | null {
+export function getErrorPageProps(isServerError = false): IErrorPageProps {
     const button = new Button({
         isLink: true,
         size: ButtonSize?.PHADA,
         style: ButtonStyle?.DREZOITS,
         text: 'Назад к чатам',
         className: 'link',
-        href: './',
+        href: '/',
         events: {
             click: (evt) => {
                 evt.preventDefault();
-                setLayout(Layout.CHAT);
+
+                router.go(LayoutPathname.CHAT);
             }
         }
     });
 
-    const page = new ErrorPage({ ...getProps(isServerError), button });
-
-    return page.getContent();
-};
-
-export function initErrorPage(): void {
-    const backButton = document.querySelector('.link');
-
-    backButton?.addEventListener('click', (evt) => {
-        evt.preventDefault();
-        setLayout(Layout.EMPTY);
-    });
+    return { ...getProps(isServerError), button };
 }
 
-function getProps(isServerError: boolean): Omit<IErrorPage, 'button'> {
+function getProps(isServerError: boolean): Omit<IErrorPageProps, 'button'> {
     return isServerError
         ? {
             'title-hide': 'Проблема с сервером',

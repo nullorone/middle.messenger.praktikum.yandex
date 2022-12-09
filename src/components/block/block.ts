@@ -1,7 +1,7 @@
 import EventBus, { IEventBus } from '../../service/event-bus/event-bus';
 import { nanoid } from 'nanoid';
 
-export default abstract class Block<P extends Record<string, any> = any> {
+export default class Block<P extends Record<string, any> = any> {
     static EVENTS = {
         INIT: 'init',
         FLOW_CDM: 'flow:component-did-mount',

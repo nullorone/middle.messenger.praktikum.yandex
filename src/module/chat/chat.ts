@@ -1,15 +1,15 @@
 import template from '../../ui/markup/chat/chat.hbs';
-import { setLayout, validateInput } from '../utils';
-import { Layout } from '../const';
-import { initProfilePage } from '../profile/profile';
+import { validateInput } from '../utils';
+import { LayoutPathname } from '../const';
 import Block from '../../components/block/block';
 import { Button, ButtonSize, ButtonStyle } from '../../components/button/button';
 import { IPanelItem, PanelItem } from '../../components/panel-item/panel-item';
 import { OptionItem } from '../../components/option-item/option-item';
 import { MainItem } from '../../components/main-item/main-item';
 import { AuthField } from '../../components/auth-field/auth-field';
+import { router } from '../index';
 
-interface IChatPage {
+export interface IChatPageProps {
     authField: AuthField
     button: Button
     optionItems: OptionItem[]
@@ -20,8 +20,8 @@ interface IChatPage {
     mainItems?: MainItem[]
 }
 
-class ChatPage extends Block {
-    constructor(props: IChatPage) {
+export class ChatPage extends Block {
+    constructor(props: IChatPageProps) {
         super({ ...props });
     }
 
@@ -125,7 +125,7 @@ const OPTION_ITEMS_MEDIA_PROPS = [
     }
 ];
 
-export function getLayout(): HTMLElement | null {
+export function getChatProps(): IChatPageProps {
     const panelItems: PanelItem[] = PANEL_ITEMS_PROPS.map((item) => new PanelItem(item));
     const optionItems = OPTION_ITEMS_PROPS.map((item) => new OptionItem(item));
     const mainItems = MAIN_ITEMS_PROPS.map((item) => new MainItem(item));
@@ -151,16 +151,14 @@ export function getLayout(): HTMLElement | null {
         }
     });
 
-    const page = new ChatPage({
+    return {
         button,
         panelItems,
         optionItems,
         mainItems,
         optionMediaItems,
         authField
-    });
-
-    return page.getContent();
+    };
 }
 
 export function initChatPage(): void {
@@ -181,7 +179,7 @@ export function initChatPage(): void {
     navLink?.addEventListener('click', (evt) => {
         evt.preventDefault();
 
-        setLayout(Layout.PROFILE, { cb: initProfilePage });
+        router.go(LayoutPathname.PROFILE);
     });
 
     panelItems.forEach(item => {

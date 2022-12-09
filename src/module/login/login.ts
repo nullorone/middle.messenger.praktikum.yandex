@@ -1,19 +1,18 @@
 import template from '../../ui/markup/login/login.hbs';
-import { getFieldsForm, setLayout, validateInput } from '../utils';
-import { Layout } from '../const';
-import { initSingupPage } from '../singup/singup';
-import { initChatPage } from '../chat/chat';
+import { getFieldsForm, validateInput } from '../utils';
+import { LayoutPathname } from '../const';
 import Block from '../../components/block/block';
 import { Button, ButtonSize, ButtonStyle } from '../../components/button/button';
 import { AuthField } from '../../components/auth-field/auth-field';
+import { router } from '../index';
 
-interface ILoginPage {
+export interface ILoginPageProps {
     authFields: AuthField[]
     button: Button
 }
 
-class LoginPage extends Block {
-    constructor(props: ILoginPage) {
+export class LoginPage extends Block {
+    constructor(props: ILoginPageProps) {
         super({ ...props });
     }
 
@@ -49,7 +48,7 @@ const AUTH_FIELDS = [
     }
 ];
 
-export function getLayout(): HTMLElement | null {
+export function getLoginPageProps(): ILoginPageProps {
     const authFields = AUTH_FIELDS.map((item) => new AuthField(item));
     const button = new Button({
         type: 'submit',
@@ -59,9 +58,7 @@ export function getLayout(): HTMLElement | null {
         text: 'Авторизоваться'
     });
 
-    const page = new LoginPage({ authFields: [...authFields], button });
-
-    return page.getContent();
+    return { authFields: [...authFields], button };
 }
 
 export function initLoginPage(): void {
@@ -74,13 +71,13 @@ export function initLoginPage(): void {
         const formData = getFieldsForm(form);
 
         if (typeof formData === 'object') {
-            setLayout(Layout.CHAT, { cb: initChatPage });
+            router.go(LayoutPathname.CHAT);
         }
     });
 
     formLink?.addEventListener('click', (evt) => {
         evt.preventDefault();
 
-        setLayout(Layout.SINGUP, { cb: initSingupPage });
+        router.go(LayoutPathname.SINGUP);
     });
 }

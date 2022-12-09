@@ -1,20 +1,18 @@
 import template from '../../ui/markup/profile/edit_profile.hbs';
-import { setLayout } from '../utils';
-import { Layout } from '../const';
 import Block from '../../components/block/block';
 import { ProfileField } from '../../components/profile-field/profile-field';
 import { Button, ButtonSize, ButtonStyle } from '../../components/button/button';
-import { initProfilePage } from '../profile/profile';
 import { Avatar } from '../../components/avatar/avatar';
+import { router } from '../index';
 
-export interface IEditProfilePage {
+export interface IEditProfilePageProps {
     profileFields: ProfileField[]
     button: Button
     avatar: Avatar
 }
 
-class EditProfilePage extends Block {
-    constructor(props: IEditProfilePage) {
+export class EditProfilePage extends Block {
+    constructor(props: IEditProfilePageProps) {
         super({ ...props });
     }
 
@@ -87,7 +85,7 @@ const PASSWORD_FIELDS_PROPS = [
     }
 ];
 
-export function getLayout(isPasswordPage?: boolean): HTMLElement | null {
+export function getEditProfileProps(isPasswordPage?: boolean): IEditProfilePageProps {
     const fields = isPasswordPage ? PASSWORD_FIELDS_PROPS : PROFILE_FIELDS_PROPS;
     const profileFields = fields.map((item) => new ProfileField(item));
 
@@ -103,12 +101,10 @@ export function getLayout(isPasswordPage?: boolean): HTMLElement | null {
             click: (evt) => {
                 evt.preventDefault();
 
-                setLayout(Layout.PROFILE, { cb: initProfilePage });
+                router.back();
             }
         }
     });
 
-    const page = new EditProfilePage({ profileFields, button, avatar });
-
-    return page.getContent();
+    return { profileFields, button, avatar };
 }

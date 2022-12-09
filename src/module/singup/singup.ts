@@ -1,18 +1,18 @@
 import template from '../../ui/markup/singup/singup.hbs';
-import { getFieldsForm, setLayout, validateInput } from '../utils';
-import { Layout } from '../const';
-import { initLoginPage } from '../login/login';
+import { getFieldsForm, validateInput } from '../utils';
+import { LayoutPathname } from '../const';
 import Block from '../../components/block/block';
 import { AuthField } from '../../components/auth-field/auth-field';
 import { Button, ButtonSize, ButtonStyle } from '../../components/button/button';
+import { router } from '../index';
 
-export interface ISingupPage {
+export interface ISingupPageProps {
     authFields: AuthField[]
     button: Button
 }
 
-class SingupPage extends Block {
-    constructor(props: ISingupPage) {
+export class SingupPage extends Block {
+    constructor(props: ISingupPageProps) {
         super({ ...props });
     }
 
@@ -123,7 +123,7 @@ const AUTH_FIELDS_PROPS = [
     }
 ];
 
-export function getLayout(): HTMLElement | null {
+export function getSingupPageProps(): ISingupPageProps {
     const authFields = AUTH_FIELDS_PROPS.map((item) => new AuthField(item));
     const button = new Button({
         type: 'submit',
@@ -133,9 +133,7 @@ export function getLayout(): HTMLElement | null {
         text: 'Зарегистрироваться'
     });
 
-    const page = new SingupPage({ authFields, button });
-
-    return page.getContent();
+    return { authFields, button };
 }
 
 export function initSingupPage(): void {
@@ -148,13 +146,13 @@ export function initSingupPage(): void {
         const formData = getFieldsForm(form);
 
         if (typeof formData === 'object') {
-            setLayout(Layout.LOGIN, { cb: initLoginPage });
+            router.go(LayoutPathname.LOGIN);
         }
     });
 
     entryLink?.addEventListener('click', (evt) => {
         evt.preventDefault();
 
-        setLayout(Layout.LOGIN, { cb: initLoginPage });
+        router.go(LayoutPathname.LOGIN);
     });
 }

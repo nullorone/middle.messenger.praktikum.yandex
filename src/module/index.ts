@@ -1,6 +1,5 @@
-import { Layout, PageInitFunction } from './const';
-import { setLayout } from './utils';
-import { initLoginPage } from './login/login';
+import Router from '../service/router/router';
+import { Layout } from './const';
 
 function routeLayout(): void {
     const navLinks = document.querySelectorAll('.index__link');
@@ -8,23 +7,26 @@ function routeLayout(): void {
     navLinks.forEach((link) => {
         link.addEventListener('click', (evt) => {
             evt.preventDefault();
+            const target = evt.target as HTMLAnchorElement;
+            const pathname = target.pathname;
 
-            const namePage = link.getAttribute('data-name')?.toUpperCase();
-
-            if (namePage != null) {
-                setLayout(Layout[namePage], { cb: PageInitFunction[namePage] });
-            }
+            router.go(pathname);
         });
     });
 }
 
-const root = document.getElementById('root');
+export const router = new Router('#root');
 
-setLayout(
-    Layout.LOGIN,
-    {
-        root,
-        cb: initLoginPage
-    });
+router
+    .use(Layout.LOGIN)
+    .use(Layout.SINGUP)
+    .use(Layout.ERROR_PAGE)
+    .use(Layout.ERROR_SERVER)
+    .use(Layout.PROFILE)
+    .use(Layout.EDIT_PROFILE)
+    .use(Layout.EDIT_PASSWORD)
+    .use(Layout.CHAT)
+    .start();
 
+// Обработчики ссылок временной навигации
 routeLayout();
