@@ -5,7 +5,8 @@ enum InputId {
     FIRST_NAME = 'first_name',
     SECOND_NAME = 'second_name',
     PHONE = 'phone',
-    MESSAGE = 'message'
+    MESSAGE = 'message',
+    DISPLAY_NAME = 'display_name'
 }
 
 class Validate {
@@ -64,6 +65,7 @@ class Validate {
             case InputId.PHONE:
                 return this.phone(value);
             case InputId.MESSAGE:
+            case InputId.DISPLAY_NAME:
                 return this.message(value);
             default:
                 return false;
