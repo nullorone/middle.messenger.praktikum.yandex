@@ -3,15 +3,15 @@ import { ILoginPageProps, LoginPage } from '../../module/login/login';
 import { ErrorPage, IErrorPageProps } from '../../module/error/error';
 import Block from '../../components/block/block';
 import { EditProfilePage, IEditProfilePageProps } from '../../module/edit-profile/edit-profile';
-import { ISingupPageProps, SingupPage } from '../../module/singup/singup';
 import { IProfilePageProps, ProfilePage } from '../../module/profile/profile';
 import { ChatPage, IChatPageProps } from '../../module/chat/chat';
+import { ISignupPageProps, SignupPage } from '../../module/signup/signup';
 
-export type BlockType = typeof ErrorPage | typeof LoginPage | typeof EditProfilePage | typeof ProfilePage | typeof SingupPage | typeof ChatPage | typeof Block;
+export type BlockType = typeof ErrorPage | typeof LoginPage | typeof EditProfilePage | typeof ProfilePage | typeof SignupPage | typeof ChatPage | typeof Block;
 export interface UseMethodType {
     pathname: string
     block: BlockType
-    props: ILoginPageProps | IErrorPageProps | IEditProfilePageProps | ISingupPageProps | IProfilePageProps | IChatPageProps
+    props: ILoginPageProps | IErrorPageProps | IEditProfilePageProps | ISignupPageProps | IProfilePageProps | IChatPageProps
     cb?: () => void
 }
 
