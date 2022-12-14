@@ -19,7 +19,7 @@ export const router = new Router('#root');
 
 router
     .use(Layout.LOGIN)
-    .use(Layout.SINGUP)
+    .use(Layout.SIGNUP)
     .use(Layout.ERROR_PAGE)
     .use(Layout.ERROR_SERVER)
     .use(Layout.PROFILE)
