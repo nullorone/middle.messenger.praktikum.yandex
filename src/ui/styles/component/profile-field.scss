@@ -1,6 +1,8 @@
 @import "/src/ui/styles/global";
 
 .profile-field {
+    @include relative;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,6 +13,12 @@
 
     & + & {
         border-top: 1px solid $kuznetlas;
+    }
+
+    &.error {
+        .profile-field__tip {
+            opacity: 1;
+        }
     }
 
     &__label {
@@ -34,5 +42,16 @@
         &:disabled {
             background-color: transparent;
         }
+    }
+
+    &__tip {
+        @include absolute(15px, 0, null, null);
+
+        display: inline-block;
+        margin-top: 9px;
+        font-size: 8px;
+        line-height: 1;
+        color: $irkutkinsk;
+        opacity: 0;
     }
 }

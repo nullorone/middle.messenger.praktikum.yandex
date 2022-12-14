@@ -5,7 +5,8 @@
             name="{{name}}"
             type="{{#if type}}{{type}}{{else}}text{{/if}}"
             class="profile-field__input {{#if className_input}}{{className_input}}{{/if}}"
-            value="{{value}}"
+            {{#if value}}value="{{value}}" {{/if}}
             {{#if isDisabled}}disabled{{/if}}
     />
+    {{#if tip}}<span class="profile-field__tip">{{tip}}</span>{{/if}}
 </fieldset>
