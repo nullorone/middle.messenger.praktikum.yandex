@@ -1,27 +1,5 @@
 import { validate as validateService } from '../service/validate/validate';
 
-export interface OptionsType {
-    cb?: () => void
-    root?: HTMLElement | undefined | null
-}
-
-export function setLayout(template: string | HTMLElement | null, options?: OptionsType): void {
-    let rootElement = options?.root;
-
-    if (!rootElement) {
-        rootElement = document.getElementById('root');
-    }
-
-    if (rootElement) {
-        rootElement.innerHTML = '';
-        rootElement.append(template ?? '');
-    }
-
-    if (options?.cb) {
-        options.cb?.();
-    }
-}
-
 export function getFieldsForm(form: HTMLFormElement): Record<string, string> | undefined {
     const fields: Record<string, string> = {};
     const data = new FormData(form);
@@ -67,4 +45,10 @@ export function validateInput(evt: FocusEvent, isBlur?: boolean): void {
         field.classList.add('show');
         field.classList.remove('error');
     }
+}
+
+export function catchAlertMessage(response: XMLHttpRequest): void {
+    const message = JSON.parse(response.responseText).reason;
+
+    window.alert(message);
 }
