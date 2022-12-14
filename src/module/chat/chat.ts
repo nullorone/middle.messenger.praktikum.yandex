@@ -8,6 +8,7 @@ import { OptionItem } from '../../components/option-item/option-item';
 import { MainItem } from '../../components/main-item/main-item';
 import { AuthField } from '../../components/auth-field/auth-field';
 import { router } from '../index';
+import HTTPTransport from '../../service/http/http-transport';
 
 export interface IChatPageProps {
     authField: AuthField
@@ -125,7 +126,22 @@ const OPTION_ITEMS_MEDIA_PROPS = [
     }
 ];
 
+class ChatsRequest extends HTTPTransport {
+    getChats = async (): Promise<unknown> => {
+        const url = '/chats';
+        const headers = {
+            'content-type': 'application/json'
+        };
+
+        return await this.get(url, { headers });
+    };
+}
+
 export function getChatProps(): IChatPageProps {
+    const request = new ChatsRequest();
+    void request.getChats().then((response: XMLHttpRequest) => {
+        console.log(JSON.parse(response.response));
+    });
     const panelItems: PanelItem[] = PANEL_ITEMS_PROPS.map((item) => new PanelItem(item));
     const optionItems = OPTION_ITEMS_PROPS.map((item) => new OptionItem(item));
     const mainItems = MAIN_ITEMS_PROPS.map((item) => new MainItem(item));
