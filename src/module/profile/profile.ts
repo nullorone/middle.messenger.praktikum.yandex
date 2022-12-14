@@ -6,6 +6,8 @@ import { LinkItem } from '../../components/link-item/link-item';
 import { Button, ButtonSize, ButtonStyle } from '../../components/button/button';
 import { Avatar } from '../../components/avatar/avatar';
 import { router } from '../index';
+import HTTPTransport from '../../service/http/http-transport';
+import { catchAlertMessage, validateInput } from '../utils';
 
 export interface IProfilePageProps {
     username: string
@@ -27,51 +29,86 @@ export class ProfilePage extends Block {
     }
 }
 
+class ProfilePageRequest extends HTTPTransport {
+    logout = async (): Promise<unknown> => {
+        const url = '/auth/logout';
+        const headers = {
+            'content-type': 'application/json'
+        };
+
+        return await this.post(url, { headers });
+    };
+
+    editUser = async (data: Record<string, unknown>): Promise<unknown> => {
+        const url = '/user/profile';
+        const headers = {
+            'content-type': 'application/json'
+        };
+
+        return await this.put(url, { headers, data });
+    };
+}
+
+const eventsDefault = {
+    events: {
+        focusin: (evt: FocusEvent) => validateInput(evt),
+        focusout: (evt: FocusEvent) => validateInput(evt, true)
+    }
+};
+
 const PROFILE_FIELDS_PROPS = [
     {
         id: 'email',
         name: 'email',
         label: 'Почта',
-        value: 'pochta@yandex.ru',
-        isDisabled: true
+        isDisabled: true,
+        tip: 'латиница, может включать цифры и спецсимволы вроде дефиса, обязательно должна быть «собака» (@) и точка после неё, но перед точкой обязательно должны быть буквы',
+        ...eventsDefault
     },
     {
         id: 'login',
         name: 'login',
         label: 'Логин',
-        value: 'ivanivanov',
-        isDisabled: true
+        isDisabled: true,
+        tip: 'от 3 до 20 символов, латиница, может содержать цифры, но не состоять из них, без пробелов, без спецсимволов (допустимы дефис и нижнее подчёркивание)',
+        ...eventsDefault
     },
     {
         id: 'first_name',
         name: 'first_name',
         label: 'Имя',
-        value: 'Иван',
-        isDisabled: true
+        isDisabled: true,
+        tip: 'латиница или кириллица, первая буква должна быть заглавной, без пробелов и без цифр, нет спецсимволов (допустим только дефис)',
+        ...eventsDefault
     },
     {
         id: 'second_name',
         name: 'second_name',
         label: 'Фамилия',
-        value: 'Иванов',
-        isDisabled: true
+        isDisabled: true,
+        tip: 'латиница или кириллица, первая буква должна быть заглавной, без пробелов и без цифр, нет спецсимволов (допустим только дефис)',
+        ...eventsDefault
     },
     {
         id: 'display_name',
         name: 'display_name',
         label: 'Имя в чате',
-        value: 'Иван',
-        isDisabled: true
+        isDisabled: true,
+        tip: 'Имя не должно быть пустым',
+        ...eventsDefault
     },
     {
         id: 'phone',
         name: 'phone',
         label: 'Телефон',
         type: 'tel',
-        value: '+7 (909) 967 30 30',
-        isDisabled: true
+        isDisabled: true,
+        tip: 'от 10 до 15 символов, состоит из цифр, может начинаться с плюса',
+        ...eventsDefault
     }
 ];
+
+export const profileRequest = new ProfilePageRequest();
 
 const LINK_ITEMS_PROPS = [
     {
@@ -103,14 +140,23 @@ const LINK_ITEMS_PROPS = [
             click: (evt: MouseEvent) => {
                 evt.preventDefault();
 
-                router.go(LayoutPathname.LOGIN);
+                void profileRequest
+                    .logout()
+                    .then((response: XMLHttpRequest) => {
+                        if (response.status === 200) {
+                            router.go(LayoutPathname.LOGIN);
+                        } else {
+                            catchAlertMessage(response);
+                        }
+                    });
             }
         }
     }
 ];
 
 export function getProfileProps(): IProfilePageProps {
-    const profileFields = getProfileFieldsProps().map((item) => new ProfileField(item));
+    const user = JSON.parse(localStorage.getItem('user') ?? '');
+    const profileFields = getProfileFieldsProps(user).map((item) => new ProfileField(item));
     const linkItems = LINK_ITEMS_PROPS.map((item) => new LinkItem(item));
 
     const avatar = new Avatar({
@@ -118,9 +164,9 @@ export function getProfileProps(): IProfilePageProps {
             click: (evt) => {
                 evt.preventDefault();
 
-                const modal = document.querySelector('.modal');
+                const modal = document.querySelector('.modal') as HTMLDialogElement;
 
-                modal?.setAttribute('open', 'true');
+                modal?.showModal();
             }
         }
     });
@@ -151,7 +197,7 @@ export function getProfileProps(): IProfilePageProps {
         }
     });
 
-    return { username: 'Иван', profileFields, linkItems, button, buttonModal, avatar };
+    return { username: user.display_name ?? '', profileFields, linkItems, button, buttonModal, avatar };
 }
 
 export function initProfilePage(): void {
@@ -173,10 +219,11 @@ export function backNavLinkHandler(isProfilePage = false): void {
     });
 }
 
-export function getProfileFieldsProps(isEdited?: boolean): IProfileField[] {
+export function getProfileFieldsProps(userData: Record<string, string>, isEdited?: boolean): IProfileField[] {
+    const fields: IProfileField[] = PROFILE_FIELDS_PROPS.map(({ name, ...field }) => ({ ...field, name, value: userData[name] }));
     if (isEdited) {
-        return PROFILE_FIELDS_PROPS.map(({ isDisabled, ...props }) => props);
+        return fields.map(({ isDisabled, ...props }) => props);
     }
 
-    return PROFILE_FIELDS_PROPS;
+    return fields;
 }
